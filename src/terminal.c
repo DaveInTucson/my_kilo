@@ -76,14 +76,14 @@ int getWindowSize(int *rows, int *cols)
 
 void editorProcessKeypress(char c)
 {
-    string_const cs = get_clear_screen_str();
-    string_const hc = get_home_cursor_str();
+    string_const clear_screen = get_clear_screen_str();
+    string_const home_cursor  = get_home_cursor_str();
 
     switch (c)
     {
     case CTRL_KEY('q'):
-        write(STDOUT_FILENO, cs.s, cs.length);
-        write(STDOUT_FILENO, hc.s, hc.length);
+        write_str(clear_screen);
+        write_str(home_cursor);
         exit(0);
         break;
     }
