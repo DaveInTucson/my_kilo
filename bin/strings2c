@@ -1,0 +1,99 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use FileHandle;
+
+foreach my $in_path (@ARGV)
+{
+    strings2c($in_path);
+}
+
+#------------------------------------------------------------------------------
+#
+sub strings2c
+{
+    my $in_path = shift;
+    my $out_name = $in_path;
+    $out_name =~ s/\.[a-z0-9]+$//;
+
+    
+    my $strings = read_strings($in_path);
+    write_header_file("$out_name.h", $strings);
+}
+
+#------------------------------------------------------------------------------
+#
+sub read_strings
+{
+    my $in_path = shift;
+
+    my $in = new FileHandle("< $in_path")
+        || die "Cannot open $in_path: $!\n";
+
+    my $strings = [];
+    while (my $line = <$in>)
+    {
+        chomp $line;
+        next if $line =~ /^\s*$/ || $line =~ /^\s*#/;
+        $line =~ /\s*([a-zA-Z0-9_]+)\s+(.*)$/;
+        my ($name, $value) = ($1, $2);
+        if ($value =~ /^"(.*)"$/)
+        { $value = $1; }
+
+        push @$strings, [$name, $value];
+    }
+
+    $in->close;
+    return $strings;
+}
+
+#------------------------------------------------------------------------------
+#
+sub write_header_file
+{
+    my ($out_path, $strings) = @_;
+
+    my $out = new FileHandle("> $out_path")
+        || die "Cannot open $out_path: $!\n";
+
+    my $out_macro = uc($out_path);
+    $out_macro =~ s/\./_/g;
+    print $out "#ifndef $out_macro\n";
+    print $out "#define $out_macro\n";
+    print $out "\n";
+    print $out "/* PROGRAM GENERATED CODE -- EDIT AT YOUR OWN RISK! */\n\n";
+    
+    print $out "typedef struct { const char* s; unsigned int length; } string_const;\n";
+    print $out "\n";
+    
+    foreach my $string (@$strings)
+    {
+        my ($name, $value) = @$string;
+        my $elen = escape_elngth($value);
+        print $out "inline static string_const get_${name}_str()\n";
+        print $out "{ return (string_const){ \"$value\", $elen }; }\n";
+    }
+
+    print $out "\n";
+    print $out "#endif /* $out_macro */\n";
+    $out->close;
+}
+
+#------------------------------------------------------------------------------
+#
+sub escape_length
+{
+    my $str = shift;
+
+    # this is of course completely broken, except for the fact that it gets
+    # us to the correct string length, which (in this particular case) is
+    # all we actually care about.
+    $str =~ s/\\x[0-1a-f][0-1a-f]/x/gi;
+
+    $str =~ s/\\[abfnrtv'"?\\]/x/g;
+    
+    return length($str);
+}
+
