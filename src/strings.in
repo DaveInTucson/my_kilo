@@ -1,0 +1,16 @@
+# terminal control sequences
+
+clear_screen    \x1b[2J
+home_cursor     \x1b[H
+antihome_cursor \x1b[999C\x1b[999B
+read_cursor_pos \x1b[6n
+cursor_off      \x1b[?25l
+cursor_on       \x1b[?25h
+clear_row       \x1b[K
+
+# other stuff
+
+tilde           ~
+rn              \r\n
+space           " "
+

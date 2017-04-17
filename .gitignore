@@ -1,3 +1,4 @@
 *.o
 *~
 kilo
+strings.h
