@@ -8,11 +8,11 @@ typedef struct
     int screenrows;
     int screencols;
     struct termios orig_termios;
-} editorState;
+} editor_state;
 
-extern editorState g_editor_state;
+extern editor_state g_editor_state;
 
-void enableRawMode();
-void disableRawMode();
+void enable_raw_mode();
+void disable_raw_mode();
 
 #endif /* EDITOR_STATE_H */

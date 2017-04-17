@@ -29,7 +29,7 @@ void append_welcome_message(term_buffer* tb)
 }
 
 
-void editorDrawRows(term_buffer* tb)
+void editor_draw_rows(term_buffer* tb)
 {
     string_const tilde = get_tilde_str();
     string_const rn    = get_rn_str();
@@ -49,7 +49,7 @@ void editorDrawRows(term_buffer* tb)
 }
 
 
-void editorRefreshScreen()
+void editor_refresh_screen()
 {
     term_buffer tb;
 
@@ -60,7 +60,7 @@ void editorRefreshScreen()
     tb_append_str(&tb, get_cursor_off_str());
     tb_append_str(&tb, home_cursor);
 
-    editorDrawRows(&tb);
+    editor_draw_rows(&tb);
 
     tb_append_str(&tb, home_cursor);
     tb_append_str(&tb, get_cursor_on_str());

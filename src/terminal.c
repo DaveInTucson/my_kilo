@@ -19,7 +19,7 @@ static int write_str(string_const sc)
     return sc.length;
  }
 
-char editorReadKey()
+char editor_read_key()
 {
     int nread;
     char c;
@@ -31,7 +31,7 @@ char editorReadKey()
     return c;
 }
 
-int getCursorPosition(int *rows, int *cols)
+int get_cursor_position(int *rows, int *cols)
 {
     if (write_str(get_read_cursor_pos_str()) == -1)
         return -1;
@@ -52,7 +52,7 @@ int getCursorPosition(int *rows, int *cols)
 
 }
 
-int getWindowSize(int *rows, int *cols)
+int get_window_size(int *rows, int *cols)
 {
     struct winsize ws;
 
@@ -65,16 +65,15 @@ int getWindowSize(int *rows, int *cols)
 
     if (write_str(get_antihome_cursor_str()) != -1)
     {
-        return getCursorPosition(rows, cols);
+        return get_cursor_position(rows, cols);
     }
 
     *rows = *cols = 0;
     return -1;
-    
 }
 
 
-void editorProcessKeypress(char c)
+void editor_process_keypress(char c)
 {
     string_const clear_screen = get_clear_screen_str();
     string_const home_cursor  = get_home_cursor_str();

@@ -12,7 +12,7 @@ achieved their desired end result.
 The original codebase was based on a couple of restrictions that I plan to
 stick to as well:
 
-* Implement the code using the C99 language
+* Implement the code using the C99 language (and specifically, the gcc variant of it).
 * Do not use `ncurses` or any other third party libraries
 
 I feel like it probably would be good to convert the code to use `ncurses`,
@@ -23,3 +23,5 @@ The original codebase also has at least one restriction I'm not going to
 adhere to:
 
 * Snaptoken's `kilo` was implemented in a single source file, I'm going to use more. Partly this is because of how I plan to deal with string constants, and partly just because even for a small project like this, splitting the code up into separate files makes it easier to separate the code into logically related groups.
+
+* I'm going to use my own stylistic preferences for a lot of things. For instance, using typedef names for structs, and using underscores to separate names instead of camel case.

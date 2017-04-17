@@ -3,21 +3,21 @@
 #include "editor_state.h"
 #include "die.h"
 
-void initEditor()
+void init_editor()
 {
-    if (getWindowSize(&g_editor_state.screenrows, &g_editor_state.screencols) == -1)
+    if (get_window_size(&g_editor_state.screenrows, &g_editor_state.screencols) == -1)
         die("getWindowSize");
 }
 
 int main()
 {
-    enableRawMode();
-    initEditor();
+    enable_raw_mode();
+    init_editor();
 
     while (1)
     {
-        editorRefreshScreen();
-        editorProcessKeypress(editorReadKey());
+        editor_refresh_screen();
+        editor_process_keypress(editor_read_key());
     }
     
     return 0;

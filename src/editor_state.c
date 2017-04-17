@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-editorState g_editor_state;
+editor_state g_editor_state;
 
 static inline void checked_tcgetattr(int fd, struct termios *termios_p)
 { if (tcgetattr(fd, termios_p) == -1) die("tcgetattr"); }
@@ -16,16 +16,16 @@ static inline void checked_tcsetattr(
 { if (tcsetattr(fd, optional_actions, termios_p) == -1) die("tcsetattr"); }
 
 
-void disableRawMode()
+void disable_raw_mode()
 {
     checked_tcsetattr(STDIN_FILENO, TCSAFLUSH, &g_editor_state.orig_termios);
 }
 
 
-void enableRawMode()
+void enable_raw_mode()
 {
     checked_tcgetattr(STDIN_FILENO, &g_editor_state.orig_termios);
-    atexit(disableRawMode);
+    atexit(disable_raw_mode);
 
     struct termios raw = g_editor_state.orig_termios;
     raw.c_iflag &= ~(BRKINT | ICRNL | INPCK | ISTRIP | IXON);
