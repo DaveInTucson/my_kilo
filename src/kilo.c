@@ -5,6 +5,8 @@
 
 void init_editor()
 {
+    g_editor_state.cx = g_editor_state.cy = 0;
+
     if (get_window_size(&g_editor_state.screenrows, &g_editor_state.screencols) == -1)
         die("getWindowSize");
 }

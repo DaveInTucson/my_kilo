@@ -71,7 +71,7 @@ sub write_header_file
     foreach my $string (@$strings)
     {
         my ($name, $value) = @$string;
-        my $elen = escape_elngth($value);
+        my $elen = escape_length($value);
         print $out "inline static string_const get_${name}_str()\n";
         print $out "{ return (string_const){ \"$value\", $elen }; }\n";
     }

@@ -7,7 +7,7 @@
 void tb_init(term_buffer* tb)
 { tb->length = 0; }
 
-void tb_append(term_buffer* tb, const char* buffer, int length)
+void tb_append(term_buffer* tb, const char* buffer, unsigned int length)
 {
     if (tb->length + length > sizeof(tb->buffer))
         die("term_buffer overflow");

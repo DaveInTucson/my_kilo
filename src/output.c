@@ -4,6 +4,7 @@
 #include "term_buffer.h"
 
 #include <stdio.h>
+#include <string.h>
 
 const char* g_kilo_version = "0.0.1";
 
@@ -49,6 +50,15 @@ void editor_draw_rows(term_buffer* tb)
 }
 
 
+void editor_position_cursor(term_buffer *tb, int cx, int cy)
+{
+    char buf[32];
+
+    string_const cpf = get_cursor_pos_fmt_str();
+    snprintf(buf, sizeof(buf), cpf.s, cy+1, cx+1);
+    tb_append(tb, buf, strlen(buf));
+}
+
 void editor_refresh_screen()
 {
     term_buffer tb;
@@ -61,6 +71,8 @@ void editor_refresh_screen()
     tb_append_str(&tb, home_cursor);
 
     editor_draw_rows(&tb);
+
+    editor_position_cursor(&tb, g_editor_state.cx, g_editor_state.cy);
 
     tb_append_str(&tb, home_cursor);
     tb_append_str(&tb, get_cursor_on_str());

@@ -10,7 +10,7 @@ typedef struct
 } term_buffer;
 
 void tb_init(term_buffer* tb);
-void tb_append(term_buffer* tb, const char* buffer, int length);
+void tb_append(term_buffer* tb, const char* buffer, unsigned int length);
 void tb_write(term_buffer* tb);
 void tb_free(term_buffer* tb);
 
