@@ -7,7 +7,7 @@ kilo: ${OBJ}
 
 kilo.o: kilo.c terminal.h output.h editor_state.h die.h
 
-terminal.o: terminal.c terminal.h die.h editor_state.h
+terminal.o: terminal.c terminal.h die.h editor_state.h strings.h
 
 die.o : die.c die.h strings.h
 
