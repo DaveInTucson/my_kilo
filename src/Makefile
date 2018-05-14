@@ -1,5 +1,5 @@
 OBJ=kilo.o terminal.o die.o output.o editor_state.o term_buffer.o
-CFLAGS=-Wall -Wextra -pedantic -std=c99
+CFLAGS=-Wall -Wextra -pedantic -std=c99 -g
 STRINGS2C=../bin/strings2c
 
 kilo: ${OBJ}

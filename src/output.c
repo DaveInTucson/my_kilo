@@ -74,7 +74,6 @@ void editor_refresh_screen()
 
     editor_position_cursor(&tb, g_editor_state.cx, g_editor_state.cy);
 
-    tb_append_str(&tb, home_cursor);
     tb_append_str(&tb, get_cursor_on_str());
     
     tb_write(&tb);
