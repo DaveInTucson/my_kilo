@@ -73,6 +73,13 @@ int get_window_size(int *rows, int *cols)
 }
 
 
+void editor_move_cursor(int dcx, int dcy)
+{
+    g_editor_state.cx += dcx;
+    g_editor_state.cy += dcy;
+}
+
+
 void editor_process_keypress(char c)
 {
     string_const clear_screen = get_clear_screen_str();
@@ -85,5 +92,10 @@ void editor_process_keypress(char c)
         write_str(home_cursor);
         exit(0);
         break;
+
+    case 'w': editor_move_cursor( 0, -1); break;
+    case 's': editor_move_cursor( 0,  1); break;
+    case 'a': editor_move_cursor(-1,  0); break;
+    case 'd': editor_move_cursor( 1,  0); break;
     }
 }
