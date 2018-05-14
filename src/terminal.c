@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <sys/ioctl.h>
 #include <stdio.h>
+#include <ctype.h>
 
 #include "editor_state.h"
 #include "die.h"
@@ -18,6 +19,8 @@ enum editorKey {
     ARROW_RIGHT,
     ARROW_UP,
     ARROW_DOWN,
+    PAGE_UP,
+    PAGE_DOWN,
 };
 
 static int write_str(string_const sc)
@@ -45,6 +48,19 @@ keypress_t editor_read_key()
     
     if (seq[0] == '[')
     {
+	if (isdigit(seq[1]))
+	{
+	    if (read(STDIN_FILENO, &seq[2], 1) != 1) return ESCAPE_CHAR;
+	    if (seq[2] == '~')
+	    {
+		switch (seq[1])
+		{
+		case '5': return PAGE_UP;
+		case '6': return PAGE_DOWN;
+		}
+	    }
+	}
+
 	switch (seq[1])
 	{
 	case 'A': return ARROW_UP;
@@ -99,6 +115,11 @@ int get_window_size(int *rows, int *cols)
 }
 
 
+void editor_set_cursor_row(int cx)
+{
+    g_editor_state.cy = cx;
+}
+
 void editor_move_cursor(int dcx, int dcy)
 {
     g_editor_state.cx += dcx;
@@ -128,6 +149,14 @@ void editor_process_keypress(keypress_t c)
         write_str(home_cursor);
         exit(0);
         break;
+
+    case PAGE_UP: 
+	editor_set_cursor_row(0);
+	break;
+	
+    case PAGE_DOWN:
+	editor_set_cursor_row(g_editor_state.screenrows-1);
+	break;
 
     case ARROW_UP   : editor_move_cursor( 0, -1); break;
     case ARROW_DOWN : editor_move_cursor( 0,  1); break;
