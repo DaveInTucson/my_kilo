@@ -59,9 +59,9 @@ implementing the kilo editor.
 - [x] Step 44: Move the cursor - Set the cursor position to `cx`, `cy`
 - [x] Step 45: Move the cursor - adws keys
 - [ ] Step 46: [Arrow keys](https://viewsourcecode.org/snaptoken/kilo/03.rawInputAndOutput.html#arrow-keys)
-- [ ] Step 47: Arrow keys - using an enumeration
-- [ ] Step 48: Arrow keys - giving enumeration non-character values
-- [ ] Step 49: Prevent moving the cursor off screen
+- [x] Step 47: Arrow keys - using an enumeration
+- [x] Step 48: Arrow keys - giving enumeration non-character values
+- [x] Step 49: [Prevent moving the cursor off screen](https://viewsourcecode.org/snaptoken/kilo/03.rawInputAndOutput.html#prevent-moving-the-cursor-off-screen)
 - [ ] Step 50: The `Page Up` and `Page Down` keys
 - [ ] Step 51: 
 - [ ] Step 52: The `Home` and `End` keys

@@ -103,6 +103,16 @@ void editor_move_cursor(int dcx, int dcy)
 {
     g_editor_state.cx += dcx;
     g_editor_state.cy += dcy;
+
+    if (g_editor_state.cx < 0)
+	g_editor_state.cx = 0;
+    if (g_editor_state.cx >= g_editor_state.screencols)
+	g_editor_state.cx = g_editor_state.screencols - 1;
+    
+    if (g_editor_state.cy < 0)
+	g_editor_state.cy = 0;
+    if (g_editor_state.cy >= g_editor_state.screenrows)
+	g_editor_state.cy = g_editor_state.screenrows - 1;
 }
 
 
