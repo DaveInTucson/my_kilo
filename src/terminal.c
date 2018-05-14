@@ -11,6 +11,14 @@
 #include "strings.h"
 
 #define CTRL_KEY(k) ((k) & 0x1f)
+const char ESCAPE_CHAR = '\x1b';
+
+enum editorKey {
+    ARROW_LEFT  = 1000,
+    ARROW_RIGHT,
+    ARROW_UP,
+    ARROW_DOWN,
+};
 
 static int write_str(string_const sc)
 {
@@ -19,7 +27,7 @@ static int write_str(string_const sc)
     return sc.length;
  }
 
-char editor_read_key()
+keypress_t editor_read_key()
 {
     int nread;
     char c;
@@ -28,7 +36,25 @@ char editor_read_key()
     {
         if (nread == -1 && errno != EAGAIN) die("read");
     }
-    return c;
+    if (c != ESCAPE_CHAR) return c;
+
+    char seq[3];
+
+    if (read(STDIN_FILENO, &seq[0], 1) != 1) return ESCAPE_CHAR;
+    if (read(STDIN_FILENO, &seq[1], 1) != 1) return ESCAPE_CHAR;
+    
+    if (seq[0] == '[')
+    {
+	switch (seq[1])
+	{
+	case 'A': return ARROW_UP;
+	case 'B': return ARROW_DOWN;
+	case 'C': return ARROW_RIGHT;
+	case 'D': return ARROW_LEFT;
+	}
+    }
+
+    return ESCAPE_CHAR;
 }
 
 int get_cursor_position(int *rows, int *cols)
@@ -80,7 +106,7 @@ void editor_move_cursor(int dcx, int dcy)
 }
 
 
-void editor_process_keypress(char c)
+void editor_process_keypress(keypress_t c)
 {
     string_const clear_screen = get_clear_screen_str();
     string_const home_cursor  = get_home_cursor_str();
@@ -93,9 +119,9 @@ void editor_process_keypress(char c)
         exit(0);
         break;
 
-    case 'w': editor_move_cursor( 0, -1); break;
-    case 's': editor_move_cursor( 0,  1); break;
-    case 'a': editor_move_cursor(-1,  0); break;
-    case 'd': editor_move_cursor( 1,  0); break;
+    case ARROW_UP   : editor_move_cursor( 0, -1); break;
+    case ARROW_DOWN : editor_move_cursor( 0,  1); break;
+    case ARROW_LEFT : editor_move_cursor(-1,  0); break;
+    case ARROW_RIGHT: editor_move_cursor( 1,  0); break;
     }
 }
