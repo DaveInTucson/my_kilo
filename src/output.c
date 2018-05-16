@@ -38,7 +38,14 @@ void editor_draw_rows(term_buffer* tb)
     int y;
     for (y = 0; y < g_editor_state.screenrows; y++)
     {
-        if (y != g_editor_state.screenrows/3)
+	if (y < g_editor_state.numrows)
+	{
+	    int len = g_editor_state.row.size;
+	    if (len > g_editor_state.screencols)
+		len = g_editor_state.screencols;
+	    tb_append(tb, g_editor_state.row.chars, len);
+	}
+        else if (y != g_editor_state.screenrows/3)
             tb_append_str(tb, tilde);
         else
             append_welcome_message(tb);

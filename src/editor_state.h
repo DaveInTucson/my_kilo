@@ -3,11 +3,19 @@
 
 #include <termios.h>
 
+typedef struct
+{
+    int size;
+    char *chars;
+} editor_row;
+
 typedef struct 
 {
     int cx, cy;
     int screenrows;
     int screencols;
+    int numrows;
+    editor_row row;
     struct termios orig_termios;
 } editor_state;
 
