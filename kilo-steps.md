@@ -64,9 +64,9 @@ implementing the kilo editor.
 - [x] Step 49: [Prevent moving the cursor off screen](https://viewsourcecode.org/snaptoken/kilo/03.rawInputAndOutput.html#prevent-moving-the-cursor-off-screen)
 - [x] Step 50: [The `Page Up` and `Page Down` keys](https://viewsourcecode.org/snaptoken/kilo/03.rawInputAndOutput.html#the-page-up-and-page-down-keys) - read key sequences
 - [x] Step 51: The `Page Up` and `Page Down` keys - process keys
-- [ ] Step 52: The `Home` and `End` keys
-- [ ] Step 53: 
-- [ ] Step 54: The `Delete` key
+- [x] Step 52: [The `Home` and `End` keys](https://viewsourcecode.org/snaptoken/kilo/03.rawInputAndOutput.html#the-home-and-end-keys) - read key sequences
+- [x] Step 53: The `Home` and `End` keys - process keys
+- [x] Step 54: [The `Delete` key](https://viewsourcecode.org/snaptoken/kilo/03.rawInputAndOutput.html#the-delete-key)
 
 ## Chapter 4: - [A text viewer](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html)
 

@@ -19,8 +19,12 @@ enum editorKey {
     ARROW_RIGHT,
     ARROW_UP,
     ARROW_DOWN,
+    DEL_KEY,
+    HOME_KEY,
+    END_KEY,
     PAGE_UP,
     PAGE_DOWN,
+
 };
 
 static int write_str(string_const sc)
@@ -29,6 +33,7 @@ static int write_str(string_const sc)
     if (rc == -1 || rc != sc.length) return -1;
     return sc.length;
  }
+
 
 keypress_t editor_read_key()
 {
@@ -41,32 +46,48 @@ keypress_t editor_read_key()
     }
     if (c != ESCAPE_CHAR) return c;
 
-    char seq[3];
+    /* Special key sequences:
+     * <esc> [ <digit> ~
+     * <esc> [ [ABCDHF]
+     * <esc> O [HF]
+     */
 
-    if (read(STDIN_FILENO, &seq[0], 1) != 1) return ESCAPE_CHAR;
-    if (read(STDIN_FILENO, &seq[1], 1) != 1) return ESCAPE_CHAR;
-    
-    if (seq[0] == '[')
+    /* bug: these will be lost if it's a key sequence we don't recognize... */
+    char c1, c2;
+    if (read(STDIN_FILENO, &c1, 1) != 1) return ESCAPE_CHAR;
+    if (read(STDIN_FILENO, &c2, 1) != 1) return ESCAPE_CHAR;
+    if (c1 == '[')
     {
-	if (isdigit(seq[1]))
+	if (isdigit(c2))
 	{
-	    if (read(STDIN_FILENO, &seq[2], 1) != 1) return ESCAPE_CHAR;
-	    if (seq[2] == '~')
-	    {
-		switch (seq[1])
-		{
-		case '5': return PAGE_UP;
-		case '6': return PAGE_DOWN;
-		}
-	    }
+	    if (read(STDIN_FILENO, &c1, 1) != 1) return ESCAPE_CHAR;
+	    if (c1 != '~') return ESCAPE_CHAR;
 	}
-
-	switch (seq[1])
+	
+	switch (c2)
 	{
+	case '1': return HOME_KEY;
+	case '3': return DEL_KEY;
+	case '4': return END_KEY;
+	case '5': return PAGE_UP;
+	case '6': return PAGE_DOWN;
+	case '7': return HOME_KEY;
+	case '8': return END_KEY;
+		
 	case 'A': return ARROW_UP;
 	case 'B': return ARROW_DOWN;
 	case 'C': return ARROW_RIGHT;
 	case 'D': return ARROW_LEFT;
+	case 'H': return HOME_KEY;
+	case 'F': return END_KEY;
+	}
+    }
+    else if (c1 == 'O')
+    {
+	switch (c2)
+	{
+	case 'H': return HOME_KEY;
+	case 'F': return END_KEY;
 	}
     }
 
@@ -115,10 +136,16 @@ int get_window_size(int *rows, int *cols)
 }
 
 
-void editor_set_cursor_row(int cx)
+static inline void editor_set_cursor_row(int cy)
 {
-    g_editor_state.cy = cx;
+    g_editor_state.cy = cy;
 }
+
+static inline void editor_set_cursor_col(int cx)
+{
+    g_editor_state.cx = cx;
+}
+
 
 void editor_move_cursor(int dcx, int dcy)
 {
@@ -150,6 +177,14 @@ void editor_process_keypress(keypress_t c)
         exit(0);
         break;
 
+    case HOME_KEY:
+	editor_set_cursor_col(0);
+	break;
+
+    case END_KEY:
+	editor_set_cursor_col(g_editor_state.screencols-1);
+	break;
+	
     case PAGE_UP: 
 	editor_set_cursor_row(0);
 	break;
