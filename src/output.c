@@ -47,7 +47,7 @@ void editor_draw_rows(term_buffer* tb)
 	}
         else if (y != g_editor_state.screenrows/3)
             tb_append_str(tb, tilde);
-        else
+        else if (g_editor_state.numrows == 0)
             append_welcome_message(tb);
         
         tb_append_str(tb, get_clear_row_str());

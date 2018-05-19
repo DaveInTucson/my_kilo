@@ -73,9 +73,9 @@ implementing the kilo editor.
 - [x] Step 55: [A line viewer](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#a-line-viewer) - declarations and initialization
 - [x] Step 56: A line viewer - hard coded "hello world" string
 - [x] Step 57: A line viewer - displaying the string
-- [ ] Step 58: A line viewer - reading a line from a file
-- [ ] Step 59: A line viewer - feature test macros
-- [ ] Step 60: A line viewer - only display the welcome message when there's no file
+- [x] Step 58: A line viewer - reading a line from a file
+- [x] Step 59: A line viewer - feature test macros
+- [x] Step 60: A line viewer - only display the welcome message when there's no file
 - [ ] Step 61: Multiple lines
 - [ ] Step 62: 
 - [ ] Step 63: 
