@@ -32,11 +32,7 @@ void append_welcome_message(term_buffer* tb)
 
 void editor_draw_rows(term_buffer* tb)
 {
-    string_const tilde = get_tilde_str();
-    string_const rn    = get_rn_str();
-    
-    int y;
-    for (y = 0; y < get_screen_height(); y++)
+    for (int y = 0; y < get_screen_height(); y++)
     {
 	if (y < get_file_lines())
 	{
@@ -46,13 +42,13 @@ void editor_draw_rows(term_buffer* tb)
 	    tb_append(tb, get_line_chars(), len);
 	}
         else if (y != get_screen_height()/3)
-            tb_append_str(tb, tilde);
+            tb_append_str(tb, get_tilde_str());
         else if (get_file_lines() == 0)
             append_welcome_message(tb);
         
         tb_append_str(tb, get_clear_row_str());
         if (y + 1 < get_screen_height())
-            tb_append_str(tb, rn);
+            tb_append_str(tb, get_rn_str());
     }
 }
 
