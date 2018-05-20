@@ -136,31 +136,23 @@ int get_window_size(int *rows, int *cols)
 }
 
 
-static inline void editor_set_cursor_row(int cy)
-{
-    g_editor_state.cy = cy;
-}
-
-static inline void editor_set_cursor_col(int cx)
-{
-    g_editor_state.cx = cx;
-}
-
-
 void editor_move_cursor(int dcx, int dcy)
 {
-    g_editor_state.cx += dcx;
-    g_editor_state.cy += dcy;
+    int cx = get_cursor_x() + dcx;
+    int cy = get_cursor_y() + dcy;
 
-    if (g_editor_state.cx < 0)
-	g_editor_state.cx = 0;
-    if (g_editor_state.cx >= g_editor_state.screencols)
-	g_editor_state.cx = g_editor_state.screencols - 1;
+    if (cx < 0) 
+	cx = 0;
+    if (cx >= get_screen_width())
+	cx = get_screen_width() - 1;
     
-    if (g_editor_state.cy < 0)
-	g_editor_state.cy = 0;
-    if (g_editor_state.cy >= g_editor_state.screenrows)
-	g_editor_state.cy = g_editor_state.screenrows - 1;
+    if (cy < 0)
+	cy = 0;
+    if (cy >= get_screen_height())
+	cy = get_screen_height() - 1;
+
+    set_cursor_x(cx);
+    set_cursor_y(cy);
 }
 
 
@@ -178,19 +170,19 @@ void editor_process_keypress(keypress_t c)
         break;
 
     case HOME_KEY:
-	editor_set_cursor_col(0);
+	set_cursor_x(0);
 	break;
 
     case END_KEY:
-	editor_set_cursor_col(g_editor_state.screencols-1);
+	set_cursor_x(get_screen_width() - 1);
 	break;
 	
     case PAGE_UP: 
-	editor_set_cursor_row(0);
+	set_cursor_y(0);
 	break;
 	
     case PAGE_DOWN:
-	editor_set_cursor_row(g_editor_state.screenrows-1);
+	set_cursor_y(get_screen_height() - 1);
 	break;
 
     case ARROW_UP   : editor_move_cursor( 0, -1); break;

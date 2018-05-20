@@ -32,11 +32,7 @@ void editor_open(char *filename)
 	    linelen--;
 	}
 
-	g_editor_state.row.size = linelen;
-	g_editor_state.row.chars = malloc(linelen + 1);
-	memcpy(g_editor_state.row.chars, line, linelen);
-	g_editor_state.row.chars[linelen] = '\0';
-	g_editor_state.numrows = 1;
+	add_file_line(line, linelen);
     }
 
     free(line);

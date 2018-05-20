@@ -14,10 +14,10 @@ void append_welcome_message(term_buffer* tb)
 
     int buffer_len = snprintf(buffer, sizeof(buffer),
                               "Kilo editor -- version %s", g_kilo_version);
-    if (buffer_len > g_editor_state.screencols)
-        buffer_len = g_editor_state.screencols;
+    if (buffer_len > get_screen_width())
+        buffer_len = get_screen_width();
 
-    int padding = (g_editor_state.screencols - buffer_len) / 2;
+    int padding = (get_screen_width() - buffer_len) / 2;
     if (padding)
     {
         tb_append_str(tb, get_tilde_str());
@@ -36,22 +36,22 @@ void editor_draw_rows(term_buffer* tb)
     string_const rn    = get_rn_str();
     
     int y;
-    for (y = 0; y < g_editor_state.screenrows; y++)
+    for (y = 0; y < get_screen_height(); y++)
     {
-	if (y < g_editor_state.numrows)
+	if (y < get_file_lines())
 	{
-	    int len = g_editor_state.row.size;
-	    if (len > g_editor_state.screencols)
-		len = g_editor_state.screencols;
-	    tb_append(tb, g_editor_state.row.chars, len);
+	    int len = get_line_size();
+	    if (len > get_screen_width())
+		len = get_screen_width();
+	    tb_append(tb, get_line_chars(), len);
 	}
-        else if (y != g_editor_state.screenrows/3)
+        else if (y != get_screen_height()/3)
             tb_append_str(tb, tilde);
-        else if (g_editor_state.numrows == 0)
+        else if (get_file_lines() == 0)
             append_welcome_message(tb);
         
         tb_append_str(tb, get_clear_row_str());
-        if (y + 1 < g_editor_state.screenrows)
+        if (y + 1 < get_screen_height())
             tb_append_str(tb, rn);
     }
 }
@@ -79,7 +79,7 @@ void editor_refresh_screen()
 
     editor_draw_rows(&tb);
 
-    editor_position_cursor(&tb, g_editor_state.cx, g_editor_state.cy);
+    editor_position_cursor(&tb, get_cursor_x(), get_cursor_y());
 
     tb_append_str(&tb, get_cursor_on_str());
     

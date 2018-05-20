@@ -6,11 +6,16 @@
 
 void init_editor()
 {
-    g_editor_state.cx = g_editor_state.cy = 0;
-    g_editor_state.numrows = 0;
+    set_cursor_x(0);
+    set_cursor_y(0);
+    clear_file();
     
-    if (get_window_size(&g_editor_state.screenrows, &g_editor_state.screencols) == -1)
+    int rows, cols;
+    if (get_window_size(&rows, &cols) == -1)
         die("getWindowSize");
+
+    set_screen_height(rows);
+    set_screen_width(cols);
 }
 
 int main(int argc, char *argv[])

@@ -3,6 +3,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 editor_state g_editor_state;
 
@@ -37,3 +38,13 @@ void enable_raw_mode()
     
     checked_tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
 }
+
+void add_file_line(char* line, ssize_t linelen)
+{
+    g_editor_state.line.size = linelen;
+    g_editor_state.line.chars = malloc(linelen + 1);
+    memcpy(g_editor_state.line.chars, line, linelen);
+    g_editor_state.line.chars[linelen] = '\0';
+    g_editor_state.numlines = 1;
+}
+
