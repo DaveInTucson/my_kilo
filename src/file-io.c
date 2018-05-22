@@ -22,8 +22,7 @@ void editor_open(char *filename)
     char *line = NULL;
     size_t linecap = 0;
     ssize_t linelen;
-    linelen = getline(&line, &linecap, fp);
-    if (linelen != -1)
+    while ((linelen = getline(&line, &linecap, fp)) != -1)
     {
 	while (linelen > 0)
 	{
@@ -32,7 +31,7 @@ void editor_open(char *filename)
 	    linelen--;
 	}
 
-	add_file_line(line, linelen);
+	append_file_line(line, linelen);
     }
 
     free(line);

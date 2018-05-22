@@ -8,7 +8,7 @@ void init_editor()
 {
     set_cursor_x(0);
     set_cursor_y(0);
-    clear_file();
+    init_file();
     
     int rows, cols;
     if (get_window_size(&rows, &cols) == -1)

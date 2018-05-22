@@ -76,16 +76,16 @@ implementing the kilo editor.
 - [x] Step 58: A line viewer - reading a line from a file
 - [x] Step 59: A line viewer - feature test macros
 - [x] Step 60: A line viewer - only display the welcome message when there's no file
-- [ ] Step 61: Multiple lines
-- [ ] Step 62: 
-- [ ] Step 63: 
-- [ ] Step 64: 
-- [ ] Step 65: 
-- [ ] Step 66: Vertical scrolling
-- [ ] Step 67: 
-- [ ] Step 68: 
-- [ ] Step 69: 
-- [ ] Step 70: 
+- [x] Step 61: [Multiple lines](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#multiple-lines) - making file lines an array, initializing
+- [x] Step 62: Multiple lines - appending a line in a function
+- [x] Step 63: Multiple lines - appending lines to an array
+- [x] Step 64: Multiple lines - fetching indext lines in <tt>editor_draw_rows</tt>
+- [x] Step 65: Multiple lines - looping to read a while file
+- [ ] Step 66: [Vertical scrolling](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#vertical-scrolling)
+- [ ] Step 67: Vertical scrolling - 
+- [ ] Step 68: Vertical scrolling - 
+- [ ] Step 69: Vertical scrolling - 
+- [ ] Step 70: Vertical scrolling - 
 - [ ] Step 71: Horizontal scrolling
 - [ ] Step 72: 
 - [ ] Step 73: 

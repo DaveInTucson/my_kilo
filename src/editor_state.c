@@ -39,12 +39,17 @@ void enable_raw_mode()
     checked_tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
 }
 
-void add_file_line(char* line, ssize_t linelen)
+void append_file_line(char* line, ssize_t linelen)
 {
-    g_editor_state.line.size = linelen;
-    g_editor_state.line.chars = malloc(linelen + 1);
-    memcpy(g_editor_state.line.chars, line, linelen);
-    g_editor_state.line.chars[linelen] = '\0';
-    g_editor_state.numlines = 1;
+    g_editor_state.lines = realloc(
+	g_editor_state.lines,
+	sizeof(editor_line) * (g_editor_state.numlines + 1));
+
+    int last = g_editor_state.numlines;
+    g_editor_state.lines[last].size = linelen;
+    g_editor_state.lines[last].chars = malloc(linelen + 1);
+    memcpy(g_editor_state.lines[last].chars, line, linelen);
+    g_editor_state.lines[last].chars[linelen] = '\0';
+    g_editor_state.numlines++;
 }
 

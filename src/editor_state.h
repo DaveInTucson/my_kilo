@@ -17,7 +17,7 @@ typedef struct
     int screencols;
 
     int numlines;
-    editor_line line;
+    editor_line *lines;
     struct termios orig_termios;
 } editor_state;
 
@@ -42,11 +42,12 @@ static inline void set_cursor_x(int cx) { g_editor_state.cx = cx; }
 static inline void set_cursor_y(int cy) { g_editor_state.cy = cy; }
 
 static inline int get_file_lines() { return g_editor_state.numlines; }
-static inline void clear_file() { g_editor_state.numlines = 0; }
+static inline void init_file()
+{ g_editor_state.numlines = 0; g_editor_state.lines = NULL; }
 
-static inline int get_line_size() { return g_editor_state.line.size; }
-static inline char* get_line_chars() { return g_editor_state.line.chars; }
+static inline int get_line_size(int i) { return g_editor_state.lines[i].size; }
+static inline char* get_line_chars(int i) { return g_editor_state.lines[i].chars; }
 
-void add_file_line(char* line, ssize_t linelen);
+void append_file_line(char* line, ssize_t linelen);
 
 #endif /* EDITOR_STATE_H */

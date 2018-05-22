@@ -36,10 +36,10 @@ void editor_draw_rows(term_buffer* tb)
     {
 	if (y < get_file_lines())
 	{
-	    int len = get_line_size();
+	    int len = get_line_size(y);
 	    if (len > get_screen_width())
 		len = get_screen_width();
-	    tb_append(tb, get_line_chars(), len);
+	    tb_append(tb, get_line_chars(y), len);
 	}
         else if (y != get_screen_height()/3)
             tb_append_str(tb, get_tilde_str());
