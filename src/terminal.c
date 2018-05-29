@@ -148,8 +148,8 @@ void editor_move_cursor(int dcx, int dcy)
     
     if (cy < 0)
 	cy = 0;
-    if (cy >= get_screen_height())
-	cy = get_screen_height() - 1;
+    if (cy >= get_file_lines())
+        cy = get_file_lines();
 
     set_cursor_x(cx);
     set_cursor_y(cy);
@@ -178,11 +178,11 @@ void editor_process_keypress(keypress_t c)
 	break;
 	
     case PAGE_UP: 
-	set_cursor_y(0);
+        editor_move_cursor(0, -get_screen_height());
 	break;
 	
     case PAGE_DOWN:
-	set_cursor_y(get_screen_height() - 1);
+        editor_move_cursor(0, get_screen_height());
 	break;
 
     case ARROW_UP   : editor_move_cursor( 0, -1); break;

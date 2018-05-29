@@ -81,11 +81,11 @@ implementing the kilo editor.
 - [x] Step 63: Multiple lines - appending lines to an array
 - [x] Step 64: Multiple lines - fetching indext lines in <tt>editor_draw_rows</tt>
 - [x] Step 65: Multiple lines - looping to read a while file
-- [ ] Step 66: [Vertical scrolling](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#vertical-scrolling)
-- [ ] Step 67: Vertical scrolling - 
-- [ ] Step 68: Vertical scrolling - 
-- [ ] Step 69: Vertical scrolling - 
-- [ ] Step 70: Vertical scrolling - 
+- [x] Step 66: [Vertical scrolling](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#vertical-scrolling) - declare and initialize <tt>line_offset</tt>
+- [x] Step 67: Vertical scrolling - get offset line in <tt>editor_draw_rows</tt>
+- [x] Step 68: Vertical scrolling - add the <tt>editor_scroll</tt> function
+- [x] Step 69: Vertical scrolling - allow the cursor to scroll past the bottom of the screen
+- [x] Step 70: Vertical scrolling - position the cursor correctly based on new interpretation of cy
 - [ ] Step 71: Horizontal scrolling
 - [ ] Step 72: 
 - [ ] Step 73: 

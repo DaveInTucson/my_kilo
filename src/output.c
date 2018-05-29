@@ -2,6 +2,7 @@
 #include "strings.h"
 #include "editor_state.h"
 #include "term_buffer.h"
+#include "dlog.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -34,17 +35,21 @@ void editor_draw_rows(term_buffer* tb)
 {
     for (int y = 0; y < get_screen_height(); y++)
     {
-	if (y < get_file_lines())
+        int line_row = y + get_line_offset();
+	
+	if (line_row < get_file_lines())
 	{
-	    int len = get_line_size(y);
+	    int len = get_line_size(line_row);
 	    if (len > get_screen_width())
 		len = get_screen_width();
-	    tb_append(tb, get_line_chars(y), len);
+	    tb_append(tb, get_line_chars(line_row), len);
 	}
-        else if (y != get_screen_height()/3)
-            tb_append_str(tb, get_tilde_str());
-        else if (get_file_lines() == 0)
+        else if (get_file_lines() == 0 && y == get_screen_height()/3)
             append_welcome_message(tb);
+        else
+        {
+            tb_append_str(tb, get_tilde_str());
+        }
         
         tb_append_str(tb, get_clear_row_str());
         if (y + 1 < get_screen_height())
@@ -62,8 +67,23 @@ void editor_position_cursor(term_buffer *tb, int cx, int cy)
     tb_append(tb, buf, strlen(buf));
 }
 
+void editor_scroll()
+{
+    if (get_cursor_y() < get_line_offset())
+    {
+        set_line_offset(get_cursor_y());
+    }
+
+    if (get_cursor_y() >= get_line_offset() + get_screen_height())
+    {
+        set_line_offset(get_cursor_y() - get_screen_height() + 1);
+    }
+}
+
 void editor_refresh_screen()
 {
+    editor_scroll();
+
     term_buffer tb;
 
     tb_init(&tb);
@@ -75,7 +95,9 @@ void editor_refresh_screen()
 
     editor_draw_rows(&tb);
 
-    editor_position_cursor(&tb, get_cursor_x(), get_cursor_y());
+    editor_position_cursor(&tb, 
+                           get_cursor_x(),
+                           get_cursor_y() - get_line_offset());
 
     tb_append_str(&tb, get_cursor_on_str());
     
@@ -83,3 +105,4 @@ void editor_refresh_screen()
     tb_free(&tb);
 }
 
+/* last line */
