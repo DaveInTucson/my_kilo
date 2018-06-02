@@ -86,11 +86,11 @@ implementing the kilo editor.
 - [x] Step 68: Vertical scrolling - add the <tt>editor_scroll</tt> function
 - [x] Step 69: Vertical scrolling - allow the cursor to scroll past the bottom of the screen
 - [x] Step 70: Vertical scrolling - position the cursor correctly based on new interpretation of cy
-- [ ] Step 71: Horizontal scrolling
-- [ ] Step 72: 
-- [ ] Step 73: 
-- [ ] Step 74: 
-- [ ] Step 75: 
+- [x] Step 71: [Horizontal scrolling](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#horizontal-scrolling) - declare and initialize <tt>col_offset</tt>
+- [x] Step 72: Horizontal scrolling - update <tt>editor_draw_rows</tt>
+- [x] Step 73: Horizontal scrolling - update <tt>editor_scroll</tt>
+- [x] Step 74: Horizontal scrolling - update <tt>editor_move_cursor</tt>
+- [x] Step 75: Horizontal scrolling - update <tt>editor_refresh_screen</tt>
 - [ ] Step 76: Limit scrolling to the right
 - [ ] Step 77: Snap cursor to end of line
 - [ ] Step 78: Moving left at the start of a line

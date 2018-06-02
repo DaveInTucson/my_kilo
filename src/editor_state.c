@@ -56,6 +56,7 @@ void append_file_line(char* line, ssize_t linelen)
 void init_file()
 {
     g_editor_state.line_offset = 0;
+    g_editor_state.col_offset = 0;
     g_editor_state.numlines = 0;
     g_editor_state.lines = NULL;
 }

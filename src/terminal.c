@@ -143,8 +143,6 @@ void editor_move_cursor(int dcx, int dcy)
 
     if (cx < 0) 
 	cx = 0;
-    if (cx >= get_screen_width())
-	cx = get_screen_width() - 1;
     
     if (cy < 0)
 	cy = 0;

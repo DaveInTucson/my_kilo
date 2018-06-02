@@ -39,10 +39,11 @@ void editor_draw_rows(term_buffer* tb)
 	
 	if (line_row < get_file_lines())
 	{
-	    int len = get_line_size(line_row);
+	    int len = get_line_size(line_row) - get_col_offset();
+            if (len < 0) len = 0;
 	    if (len > get_screen_width())
 		len = get_screen_width();
-	    tb_append(tb, get_line_chars(line_row), len);
+	    tb_append(tb, get_line_chars(line_row) + get_col_offset(), len);
 	}
         else if (get_file_lines() == 0 && y == get_screen_height()/3)
             append_welcome_message(tb);
@@ -78,6 +79,16 @@ void editor_scroll()
     {
         set_line_offset(get_cursor_y() - get_screen_height() + 1);
     }
+
+    if (get_cursor_x() < get_col_offset())
+    {
+        set_col_offset(get_cursor_x());
+    }
+
+    if (get_cursor_x() >= get_col_offset() + get_screen_width())
+    {
+        set_col_offset(get_cursor_x() - get_screen_width() + 1);
+    }
 }
 
 void editor_refresh_screen()
@@ -96,7 +107,7 @@ void editor_refresh_screen()
     editor_draw_rows(&tb);
 
     editor_position_cursor(&tb, 
-                           get_cursor_x(),
+                           get_cursor_x() - get_col_offset(),
                            get_cursor_y() - get_line_offset());
 
     tb_append_str(&tb, get_cursor_on_str());

@@ -17,6 +17,7 @@ typedef struct
     int screencols;
 
     int line_offset;
+    int col_offset;
     int numlines;
     editor_line *lines;
     struct termios orig_termios;
@@ -44,6 +45,8 @@ static inline void set_cursor_y(int cy) { g_editor_state.cy = cy; }
 
 static inline int get_line_offset() { return g_editor_state.line_offset; }
 static inline void set_line_offset(int offset) { g_editor_state.line_offset = offset; }
+static inline int get_col_offset() { return g_editor_state.col_offset; }
+static inline void set_col_offset(int offset) { g_editor_state.col_offset = offset; }
 
 static inline int get_file_lines() { return g_editor_state.numlines; }
 
