@@ -91,15 +91,15 @@ implementing the kilo editor.
 - [x] Step 73: Horizontal scrolling - update <tt>editor_scroll</tt>
 - [x] Step 74: Horizontal scrolling - update <tt>editor_move_cursor</tt>
 - [x] Step 75: Horizontal scrolling - update <tt>editor_refresh_screen</tt>
-- [ ] Step 76: Limit scrolling to the right
-- [ ] Step 77: Snap cursor to end of line
-- [ ] Step 78: Moving left at the start of a line
-- [ ] Step 79: Moving right at the end of a line
-- [ ] Step 80: Rendering tabs
-- [ ] Step 81: 
-- [ ] Step 82: 
-- [ ] Step 83: 
-- [ ] Step 84: 
+- [x] Step 76: [Limit scrolling to the right](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#limit-scrolling-to-the-right)
+- [x] Step 77: [Snap cursor to end of line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#snap-cursor-to-end-of-line)
+- [x] Step 78: [Moving left at the start of a line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#moving-left-at-the-start-of-a-line)
+- [x] Step 79: [Moving right at the end of a line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#moving-right-at-the-end-of-a-line)
+- [ ] Step 80: [Rendering tabs](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#rendering-tabs) -
+- [ ] Step 81: Rendering tabs -
+- [ ] Step 82: Rendering tabs -
+- [ ] Step 83: Rendering tabs -
+- [ ] Step 84: Rendering tabs -
 - [ ] Step 85: Tabs and the cursor
 - [ ] Step 86: 
 - [ ] Step 87: 

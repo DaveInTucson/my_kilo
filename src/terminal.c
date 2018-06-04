@@ -141,14 +141,34 @@ void editor_move_cursor(int dcx, int dcy)
     int cx = get_cursor_x() + dcx;
     int cy = get_cursor_y() + dcy;
 
-    if (cx < 0) 
-	cx = 0;
+    if (cx < 0)
+    {
+        if (cy > 0)
+        {
+            cy--;
+            cx = get_line_size(cy);
+        }
+        else
+            cx = 0;
+    }
     
     if (cy < 0)
 	cy = 0;
     if (cy >= get_file_lines())
         cy = get_file_lines();
 
+    int max_cx = get_line_size(cy);
+    if (cx > max_cx)
+    {
+        if (dcx == 1 && dcy == 0 && cy < get_file_lines())
+        {
+            cx = 0;
+            cy++;
+        }
+        else
+            cx = max_cx;
+    }
+    
     set_cursor_x(cx);
     set_cursor_y(cy);
 }

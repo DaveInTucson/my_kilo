@@ -50,8 +50,11 @@ static inline void set_col_offset(int offset) { g_editor_state.col_offset = offs
 
 static inline int get_file_lines() { return g_editor_state.numlines; }
 
-static inline int get_line_size(int i) { return g_editor_state.lines[i].size; }
-static inline char* get_line_chars(int i) { return g_editor_state.lines[i].chars; }
+static inline int get_line_size(int i)
+{ return i < get_file_lines() ? g_editor_state.lines[i].size : 0; }
+
+static inline char* get_line_chars(int i)
+{ return i < get_file_lines() ? g_editor_state.lines[i].chars : NULL; }
 
 void append_file_line(char* line, ssize_t linelen);
 void init_file();
