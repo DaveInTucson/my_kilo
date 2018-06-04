@@ -5,7 +5,7 @@
 
 void dlog(const char *format, ...)
 {
-    FILE* f = fopen("dlog.txt", "a");
+    FILE* f = fopen("Dlog.txt", "a");
     if (f)
     {
         va_list args;

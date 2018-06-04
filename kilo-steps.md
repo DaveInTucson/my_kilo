@@ -95,27 +95,27 @@ implementing the kilo editor.
 - [x] Step 77: [Snap cursor to end of line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#snap-cursor-to-end-of-line)
 - [x] Step 78: [Moving left at the start of a line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#moving-left-at-the-start-of-a-line)
 - [x] Step 79: [Moving right at the end of a line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#moving-right-at-the-end-of-a-line)
-- [ ] Step 80: [Rendering tabs](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#rendering-tabs) -
-- [ ] Step 81: Rendering tabs -
-- [ ] Step 82: Rendering tabs -
-- [ ] Step 83: Rendering tabs -
-- [ ] Step 84: Rendering tabs -
-- [ ] Step 85: Tabs and the cursor
-- [ ] Step 86: 
-- [ ] Step 87: 
-- [ ] Step 88: 
-- [ ] Step 89: 
+- [x] Step 80: [Rendering tabs](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#rendering-tabs) - Declare and initialize <tt>rsize</tt>, <tt>render</tt>
+- [x] Step 81: Rendering tabs - <tt>editor_update_line</tt>
+- [x] Step 82: Rendering tabs - update <tt>editor_draw_rows</tt> to use <tt>rsize</tt>, <tt>render</tt>
+- [x] Step 83: Rendering tabs - modify <tt>editor_update_line</tt> to expand tabs to spaces
+- [x] Step 84: Rendering tabs - make tab stop length a constant
+- [ ] Step 85: [Tabs and the cursor](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#tabs-and-the-cursor) - 
+- [ ] Step 86: Tabs and the cursor - 
+- [ ] Step 87: Tabs and the cursor - 
+- [ ] Step 88: Tabs and the cursor - 
+- [ ] Step 89: Tabs and the cursor - 
 - [ ] Step 90: Scrolling with `Page Up` and `Page Down`
 - [ ] Step 91: Moving to the end of the line with `End`
-- [ ] Step 92: Status bar
-- [ ] Step 93: 
-- [ ] Step 94: 
-- [ ] Step 95: 
-- [ ] Step 96: 
-- [ ] Step 97: Status Message
-- [ ] Step 98: 
-- [ ] Step 99: 
-- [ ] Step 100: 
+- [ ] Step 92: Status bar - 
+- [ ] Step 93: Status bar - 
+- [ ] Step 94: Status bar - 
+- [ ] Step 95: Status bar - 
+- [ ] Step 96: Status bar - 
+- [ ] Step 97: Status Message - 
+- [ ] Step 98: Status Message - 
+- [ ] Step 99: Status Message - 
+- [ ] Step 100: Status Message - 
 
 ## Chapter 5: - [A text editor](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html)
 

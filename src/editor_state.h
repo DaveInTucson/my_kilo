@@ -8,6 +8,8 @@ typedef struct
 {
     int size;
     char *chars;
+    int rsize;
+    char* render;
 } editor_line;
 
 typedef struct 
@@ -55,6 +57,12 @@ static inline int get_line_size(int i)
 
 static inline char* get_line_chars(int i)
 { return i < get_file_lines() ? g_editor_state.lines[i].chars : NULL; }
+
+static inline int get_render_size(int i)
+{ return i < get_file_lines() ? g_editor_state.lines[i].rsize : 0; }
+
+static inline char* get_render_chars(int i)
+{ return i < get_file_lines() ? g_editor_state.lines[i].render : NULL; }
 
 void append_file_line(char* line, ssize_t linelen);
 void init_file();

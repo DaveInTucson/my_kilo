@@ -39,11 +39,11 @@ void editor_draw_rows(term_buffer* tb)
 	
 	if (line_row < get_file_lines())
 	{
-	    int len = get_line_size(line_row) - get_col_offset();
+	    int len = get_render_size(line_row) - get_col_offset();
             if (len < 0) len = 0;
 	    if (len > get_screen_width())
 		len = get_screen_width();
-	    tb_append(tb, get_line_chars(line_row) + get_col_offset(), len);
+	    tb_append(tb, get_render_chars(line_row) + get_col_offset(), len);
 	}
         else if (get_file_lines() == 0 && y == get_screen_height()/3)
             append_welcome_message(tb);

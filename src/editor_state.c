@@ -1,11 +1,13 @@
 #include "editor_state.h"
 #include "die.h"
+#include "dlog.h"
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
 
 editor_state g_editor_state;
+static const int g_tab_stop = 8;
 
 static inline void checked_tcgetattr(int fd, struct termios *termios_p)
 { if (tcgetattr(fd, termios_p) == -1) die("tcgetattr"); }
@@ -39,6 +41,34 @@ void enable_raw_mode()
     checked_tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
 }
 
+void editor_update_line(editor_line* line)
+{
+    int tab_count = 0;
+    for (int j = 0; j < line->size; j++)
+        if (line->chars[j] == '\t') tab_count++;
+
+    free(line->render);
+    line->render = malloc(line->size + tab_count*(g_tab_stop-1) + 1);
+    
+    int idx = 0;
+    for (int j = 0; j < line->size; j++)
+    {
+        if (line->chars[j] == '\t')
+        {
+            do
+                line->render[idx++] = ' ';
+            while (idx % g_tab_stop != 0);
+        }
+        else
+        {
+            line->render[idx++] = line->chars[j];
+        }
+    }
+    line->render[idx] = '\0';
+    line->rsize = idx;
+}
+
+
 void append_file_line(char* line, ssize_t linelen)
 {
     g_editor_state.lines = realloc(
@@ -50,6 +80,11 @@ void append_file_line(char* line, ssize_t linelen)
     g_editor_state.lines[last].chars = malloc(linelen + 1);
     memcpy(g_editor_state.lines[last].chars, line, linelen);
     g_editor_state.lines[last].chars[linelen] = '\0';
+
+    g_editor_state.lines[last].rsize = 0;
+    g_editor_state.lines[last].render = NULL;
+    editor_update_line(&g_editor_state.lines[last]);
+    
     g_editor_state.numlines++;
 }
 
