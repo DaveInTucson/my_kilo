@@ -7,7 +7,7 @@
 #include <string.h>
 
 editor_state g_editor_state;
-static const int g_tab_stop = 8;
+static const int g_tab_stop = KILO_TAB_STOP;
 
 static inline void checked_tcgetattr(int fd, struct termios *termios_p)
 { if (tcgetattr(fd, termios_p) == -1) die("tcgetattr"); }

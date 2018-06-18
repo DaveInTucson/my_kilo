@@ -68,8 +68,32 @@ void editor_position_cursor(term_buffer *tb, int cx, int cy)
     tb_append(tb, buf, strlen(buf));
 }
 
+int editor_row_cx_to_rx(editor_line *line, int cx)
+{
+    int rx = 0;
+
+    for (int j = 0; j < cx; j++)
+    {
+        if (line->chars[j] == '\t')
+            rx += (KILO_TAB_STOP - 1) - (rx % KILO_TAB_STOP);
+        rx++;
+    }
+
+    return rx;
+}
+
+
 void editor_scroll()
 {
+    set_cursor_rx(0);
+    if (get_cursor_y() < get_file_lines())
+    {
+        set_cursor_rx(editor_row_cx_to_rx(
+                          get_line(get_cursor_y()),
+                          get_cursor_x()));
+    }
+
+    
     if (get_cursor_y() < get_line_offset())
     {
         set_line_offset(get_cursor_y());
@@ -80,14 +104,14 @@ void editor_scroll()
         set_line_offset(get_cursor_y() - get_screen_height() + 1);
     }
 
-    if (get_cursor_x() < get_col_offset())
+    if (get_cursor_rx() < get_col_offset())
     {
-        set_col_offset(get_cursor_x());
+        set_col_offset(get_cursor_rx());
     }
 
-    if (get_cursor_x() >= get_col_offset() + get_screen_width())
+    if (get_cursor_rx() >= get_col_offset() + get_screen_width())
     {
-        set_col_offset(get_cursor_x() - get_screen_width() + 1);
+        set_col_offset(get_cursor_rx() - get_screen_width() + 1);
     }
 }
 
@@ -107,7 +131,7 @@ void editor_refresh_screen()
     editor_draw_rows(&tb);
 
     editor_position_cursor(&tb, 
-                           get_cursor_x() - get_col_offset(),
+                           get_cursor_rx() - get_col_offset(),
                            get_cursor_y() - get_line_offset());
 
     tb_append_str(&tb, get_cursor_on_str());

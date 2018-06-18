@@ -8,6 +8,7 @@ void init_editor()
 {
     set_cursor_x(0);
     set_cursor_y(0);
+    set_cursor_rx(0);
     init_file();
     
     int rows, cols;

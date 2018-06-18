@@ -4,6 +4,8 @@
 #include <termios.h>
 #include <unistd.h>
 
+#define KILO_TAB_STOP 8
+
 typedef struct
 {
     int size;
@@ -15,6 +17,7 @@ typedef struct
 typedef struct 
 {
     int cx, cy;
+    int rx;
     int screenrows;
     int screencols;
 
@@ -45,12 +48,18 @@ static inline int get_cursor_y() { return g_editor_state.cy; }
 static inline void set_cursor_x(int cx) { g_editor_state.cx = cx; }
 static inline void set_cursor_y(int cy) { g_editor_state.cy = cy; }
 
+static inline int get_cursor_rx() { return g_editor_state.rx; }
+static inline void set_cursor_rx(int rx) { g_editor_state.rx = rx; }
+
 static inline int get_line_offset() { return g_editor_state.line_offset; }
 static inline void set_line_offset(int offset) { g_editor_state.line_offset = offset; }
 static inline int get_col_offset() { return g_editor_state.col_offset; }
 static inline void set_col_offset(int offset) { g_editor_state.col_offset = offset; }
 
 static inline int get_file_lines() { return g_editor_state.numlines; }
+
+static inline editor_line* get_line(int i)
+{ return i < get_file_lines() ? &g_editor_state.lines[i] : NULL ; }
 
 static inline int get_line_size(int i)
 { return i < get_file_lines() ? g_editor_state.lines[i].size : 0; }

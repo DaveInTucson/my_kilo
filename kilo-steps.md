@@ -100,11 +100,11 @@ implementing the kilo editor.
 - [x] Step 82: Rendering tabs - update <tt>editor_draw_rows</tt> to use <tt>rsize</tt>, <tt>render</tt>
 - [x] Step 83: Rendering tabs - modify <tt>editor_update_line</tt> to expand tabs to spaces
 - [x] Step 84: Rendering tabs - make tab stop length a constant
-- [ ] Step 85: [Tabs and the cursor](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#tabs-and-the-cursor) - 
-- [ ] Step 86: Tabs and the cursor - 
-- [ ] Step 87: Tabs and the cursor - 
-- [ ] Step 88: Tabs and the cursor - 
-- [ ] Step 89: Tabs and the cursor - 
+- [x] Step 85: [Tabs and the cursor](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#tabs-and-the-cursor) - declare and initialize `rx`
+- [x] Step 86: Tabs and the cursor - update <tt>editor_scroll</tt>
+- [x] Step 87: Tabs and the cursor - update <tt>editor_refresh_screen</tt>
+- [x] Step 88: Tabs and the cursor - calculate <tt>rx</tt> in <tt>editor_row_cx_to_rx</tt>
+- [x] Step 89: Tabs and the cursor - call <tt>editor_row_cx_to_rx</tt> from <tt>editor_scroll</tt>
 - [ ] Step 90: Scrolling with `Page Up` and `Page Down`
 - [ ] Step 91: Moving to the end of the line with `End`
 - [ ] Step 92: Status bar - 
