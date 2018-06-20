@@ -105,8 +105,8 @@ implementing the kilo editor.
 - [x] Step 87: Tabs and the cursor - update <tt>editor_refresh_screen</tt>
 - [x] Step 88: Tabs and the cursor - calculate <tt>rx</tt> in <tt>editor_row_cx_to_rx</tt>
 - [x] Step 89: Tabs and the cursor - call <tt>editor_row_cx_to_rx</tt> from <tt>editor_scroll</tt>
-- [ ] Step 90: Scrolling with `Page Up` and `Page Down`
-- [ ] Step 91: Moving to the end of the line with `End`
+- [x] Step 90: [Scrolling with `Page Up` and `Page Down`](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#scrolling-with-page-up-and-page-down)
+- [x] Step 91: [Moving to the end of the line with `End`](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#move-to-the-end-of-the-line-with-end)
 - [ ] Step 92: Status bar - 
 - [ ] Step 93: Status bar - 
 - [ ] Step 94: Status bar - 

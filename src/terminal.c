@@ -192,7 +192,8 @@ void editor_process_keypress(keypress_t c)
 	break;
 
     case END_KEY:
-	set_cursor_x(get_screen_width() - 1);
+        if (get_cursor_y() < get_file_lines())
+            set_cursor_x(get_line_size(get_cursor_y()));
 	break;
 	
     case PAGE_UP: 
