@@ -3,7 +3,7 @@
 This file is to keep track of where I am in `snaptoken`'s 184 steps of
 implementing the kilo editor.
 
-- [x] - [Table of contents](https://viewsourcecode.org/snaptoken/kilo/index.html)
+- * - [Table of contents](https://viewsourcecode.org/snaptoken/kilo/index.html)
 
 ## Chapter 1: - [Setup](https://viewsourcecode.org/snaptoken/kilo/01.setup.html)
 
@@ -112,10 +112,10 @@ implementing the kilo editor.
 - [x] Step 94: Status bar - storing the file name
 - [x] Step 95: Status bar - displaying file name, lines
 - [x] Step 96: Status bar - show the current line number
-- [ ] Step 97: [Status Message](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#status-message) - declare and initialize storage 
-- [ ] Step 98: Status Message - <tt>editor_set_status_message</tt>, initial status message
-- [ ] Step 99: Status Message - reserving a screen line for the status messsage
-- [ ] Step 100: Status Message - <tt>editor_draw_message_bar</tt>
+- [x] Step 97: [Status Message](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#status-message) - declare and initialize storage 
+- [x] Step 98: Status Message - <tt>editor_set_status_message</tt>, initial status message
+- [x] Step 99: Status Message - reserving a screen line for the status messsage
+- [x] Step 100: Status Message - <tt>editor_draw_message_bar</tt>
 
 ## Chapter 5: - [A text editor](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html)
 
@@ -209,3 +209,5 @@ implementing the kilo editor.
 - [ ] Step 182: 
 - [ ] Step 183: 
 - [ ] Step 184: 
+
+* Appendix: [Ideas for features to add on your own](https://viewsourcecode.org/snaptoken/kilo/08.appendices.html#ideas-for-features-to-add-on-your-own)

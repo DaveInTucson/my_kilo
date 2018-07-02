@@ -142,7 +142,20 @@ void editor_draw_status_bar(term_buffer* tb)
     }
     
     tb_append_str(tb, get_colors_normal_str());
+    tb_append_str(tb, get_rn_str());
 }
+
+void editor_draw_message_bar(term_buffer* tb)
+{
+    tb_append_str(tb, get_clear_row_str());
+
+    int msglen = strlen(get_status_buffer());
+    if (msglen > get_screen_width())
+        msglen = get_screen_width();
+    if (msglen && time(NULL) - get_status_time() < 5)
+        tb_append(tb, get_status_buffer(), msglen);
+}
+
 
 void editor_refresh_screen()
 {
@@ -159,6 +172,7 @@ void editor_refresh_screen()
 
     editor_draw_rows(&tb);
     editor_draw_status_bar(&tb);
+    editor_draw_message_bar(&tb);
     
     editor_position_cursor(&tb, 
                            get_cursor_rx() - get_col_offset(),
@@ -169,5 +183,6 @@ void editor_refresh_screen()
     tb_write(&tb);
     tb_free(&tb);
 }
+
 
 /* last line */

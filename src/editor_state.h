@@ -3,6 +3,7 @@
 
 #include <termios.h>
 #include <unistd.h>
+#include <time.h>
 
 #define KILO_TAB_STOP 8
 
@@ -26,6 +27,8 @@ typedef struct
     int numlines;
     editor_line *lines;
     char *filename;
+    char statusmsg[80];
+    time_t statusmsg_time;
     struct termios orig_termios;
 } editor_state;
 
@@ -79,5 +82,9 @@ void init_file();
 void set_filename(const char* filename);
 static inline char* get_filename(char * alternate)
 { return g_editor_state.filename != NULL ? g_editor_state.filename : alternate; }
+
+void editor_set_status_message(const char* fmt, ...);
+static inline char* get_status_buffer() { return g_editor_state.statusmsg; }
+static inline time_t get_status_time() { return g_editor_state.statusmsg_time; }
 
 #endif /* EDITOR_STATE_H */

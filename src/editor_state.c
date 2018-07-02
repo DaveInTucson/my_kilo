@@ -9,6 +9,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
+#include <stdio.h>
 
 editor_state g_editor_state;
 static const int g_tab_stop = KILO_TAB_STOP;
@@ -99,10 +101,25 @@ void init_file()
     g_editor_state.numlines = 0;
     g_editor_state.lines = NULL;
     g_editor_state.filename = NULL;
+    g_editor_state.statusmsg[0] = '\0';
+    g_editor_state.statusmsg_time = 0;
 }
 
 void set_filename(const char* filename)
 {
     free(g_editor_state.filename);
     g_editor_state.filename = strdup(filename);
+}
+
+void editor_set_status_message(const char* fmt, ...)
+{
+    va_list ap;
+    va_start(ap, fmt);
+    vsnprintf(g_editor_state.statusmsg, 
+              sizeof(g_editor_state.statusmsg),
+              fmt,
+              ap);
+    va_end(ap);
+
+    g_editor_state.statusmsg_time = time(NULL);
 }

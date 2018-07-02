@@ -15,7 +15,7 @@ void init_editor()
     if (get_window_size(&rows, &cols) == -1)
         die("getWindowSize");
 
-    set_screen_height(rows-1);
+    set_screen_height(rows-2);
     set_screen_width(cols);
 }
 
@@ -26,6 +26,8 @@ int main(int argc, char *argv[])
     if (argc >= 2)
 	editor_open(argv[1]);
     
+    editor_set_status_message("HELP: Ctrl-Q = quit");
+
     while (1)
     {
         editor_refresh_screen();
