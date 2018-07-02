@@ -25,6 +25,7 @@ typedef struct
     int col_offset;
     int numlines;
     editor_line *lines;
+    char *filename;
     struct termios orig_termios;
 } editor_state;
 
@@ -75,5 +76,8 @@ static inline char* get_render_chars(int i)
 
 void append_file_line(char* line, ssize_t linelen);
 void init_file();
+void set_filename(const char* filename);
+static inline char* get_filename(char * alternate)
+{ return g_editor_state.filename != NULL ? g_editor_state.filename : alternate; }
 
 #endif /* EDITOR_STATE_H */

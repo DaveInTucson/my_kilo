@@ -53,8 +53,7 @@ void editor_draw_rows(term_buffer* tb)
         }
         
         tb_append_str(tb, get_clear_row_str());
-        if (y + 1 < get_screen_height())
-            tb_append_str(tb, get_rn_str());
+        tb_append_str(tb, get_rn_str());
     }
 }
 
@@ -115,6 +114,36 @@ void editor_scroll()
     }
 }
 
+void editor_draw_status_bar(term_buffer* tb)
+{
+    tb_append_str(tb, get_colors_invert_str());
+
+    char status[80], rstatus[80];
+    int len = snprintf(status, sizeof(status), "%.20s - %d lines",
+                       get_filename("[No name]"),
+                       get_file_lines());
+    
+    int rlen = snprintf(rstatus, sizeof(rstatus), "%d/%d",
+                        get_cursor_y() + 1, get_file_lines());
+    
+    if (len > get_screen_width())
+        len = get_screen_width();
+    tb_append(tb, status, len);
+    
+    while (len < get_screen_width())
+    {
+        if (get_screen_width() - len == rlen)
+        {
+            tb_append(tb, rstatus, rlen);
+            break;
+        }
+        tb_append(tb, " ", 1);
+        len++;
+    }
+    
+    tb_append_str(tb, get_colors_normal_str());
+}
+
 void editor_refresh_screen()
 {
     editor_scroll();
@@ -129,7 +158,8 @@ void editor_refresh_screen()
     tb_append_str(&tb, home_cursor);
 
     editor_draw_rows(&tb);
-
+    editor_draw_status_bar(&tb);
+    
     editor_position_cursor(&tb, 
                            get_cursor_rx() - get_col_offset(),
                            get_cursor_y() - get_line_offset());

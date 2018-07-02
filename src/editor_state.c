@@ -1,3 +1,7 @@
+#define _DEFAULT_SOURCE
+#define _BSD_SOURCE
+#define _GNU_SOURCE
+
 #include "editor_state.h"
 #include "die.h"
 #include "dlog.h"
@@ -94,4 +98,11 @@ void init_file()
     g_editor_state.col_offset = 0;
     g_editor_state.numlines = 0;
     g_editor_state.lines = NULL;
+    g_editor_state.filename = NULL;
+}
+
+void set_filename(const char* filename)
+{
+    free(g_editor_state.filename);
+    g_editor_state.filename = strdup(filename);
 }

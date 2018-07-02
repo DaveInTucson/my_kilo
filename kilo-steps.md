@@ -107,15 +107,15 @@ implementing the kilo editor.
 - [x] Step 89: Tabs and the cursor - call <tt>editor_row_cx_to_rx</tt> from <tt>editor_scroll</tt>
 - [x] Step 90: [Scrolling with `Page Up` and `Page Down`](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#scrolling-with-page-up-and-page-down)
 - [x] Step 91: [Moving to the end of the line with `End`](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#move-to-the-end-of-the-line-with-end)
-- [ ] Step 92: Status bar - 
-- [ ] Step 93: Status bar - 
-- [ ] Step 94: Status bar - 
-- [ ] Step 95: Status bar - 
-- [ ] Step 96: Status bar - 
-- [ ] Step 97: Status Message - 
-- [ ] Step 98: Status Message - 
-- [ ] Step 99: Status Message - 
-- [ ] Step 100: Status Message - 
+- [x] Step 92: [Status bar](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#status-bar) - reserve the bottom line of the display
+- [x] Step 93: Status bar - <tt>editor_draw_status_bar</tt>
+- [x] Step 94: Status bar - storing the file name
+- [x] Step 95: Status bar - displaying file name, lines
+- [x] Step 96: Status bar - show the current line number
+- [ ] Step 97: [Status Message](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#status-message) - declare and initialize storage 
+- [ ] Step 98: Status Message - <tt>editor_set_status_message</tt>, initial status message
+- [ ] Step 99: Status Message - reserving a screen line for the status messsage
+- [ ] Step 100: Status Message - <tt>editor_draw_message_bar</tt>
 
 ## Chapter 5: - [A text editor](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html)
 

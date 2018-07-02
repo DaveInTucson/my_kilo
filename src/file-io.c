@@ -19,6 +19,8 @@ void editor_open(char *filename)
     FILE *fp = fopen(filename, "r");
     if (!fp) die ("fopen");
 
+    set_filename(filename);
+    
     char *line = NULL;
     size_t linecap = 0;
     ssize_t linelen;

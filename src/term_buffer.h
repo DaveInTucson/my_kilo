@@ -5,7 +5,7 @@
 
 typedef struct
 {
-    char buffer[1024];
+    char buffer[1024*64];
     int length;
 } term_buffer;
 

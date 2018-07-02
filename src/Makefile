@@ -15,7 +15,7 @@ output.o: output.c output.h strings.h editor_state.h term_buffer.h dlog.h
 
 editor_state.o: editor_state.c editor_state.h die.h
 
-term_buffer.o: term_buffer.h strings.h die.h
+term_buffer.o: term_buffer.h strings.h die.h dlog.h
 
 file-io.o: file-io.c file-io.h editor_state.h die.h
 

@@ -8,6 +8,8 @@ cursor_off      \x1b[?25l
 cursor_on       \x1b[?25h
 clear_row       \x1b[K
 cursor_pos_fmt  \x1b[%d;%dH
+colors_invert   \x1b[7m
+colors_normal   \x1b[m
 
 # other stuff
 

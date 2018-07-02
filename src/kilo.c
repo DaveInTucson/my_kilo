@@ -15,7 +15,7 @@ void init_editor()
     if (get_window_size(&rows, &cols) == -1)
         die("getWindowSize");
 
-    set_screen_height(rows);
+    set_screen_height(rows-1);
     set_screen_width(cols);
 }
 
