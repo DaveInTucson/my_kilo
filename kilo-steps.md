@@ -122,13 +122,13 @@ implementing the kilo editor.
 - [x] Step 101: [Insert ordinary characters](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#insert-ordinary-characters) - `editor_line_insert_char`
 - [x] Step 102: Insert ordinary characters - `editor_insert_char`
 - [x] Step 103: Insert ordinary characters - call `editor_insert_char` from `editor_process_keypress`
-- [ ] Step 104: [Prevent inserting special characters](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#prevent-inserting-special-characters)
-- [ ] Step 105: Save to disk
-- [ ] Step 106: 
-- [ ] Step 107: 
-- [ ] Step 108: 
-- [ ] Step 109: 
-- [ ] Step 110: 
+- [x] Step 104: [Prevent inserting special characters](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#prevent-inserting-special-characters)
+- [x] Step 105: [Save to disk](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#save-to-disk) - copying the file's text to a buffer (I skipped this)
+- [x] Step 106: Save to disk - writing the file's text to a file
+- [x] Step 107: Save to disk - Saving with Ctrl+S
+- [x] Step 108: Save to disk - error handling in <tt>editor_save</tt>
+- [x] Step 109: Save to disk - status message
+- [x] Step 110: Save to disk - <tt>editor_set_status_message</tt> prototype
 - [ ] Step 111: Dirty flag
 - [ ] Step 112: 
 - [ ] Step 113: 

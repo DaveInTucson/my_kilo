@@ -10,8 +10,11 @@
 #include <sys/types.h>
 #include <string.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include <errno.h>
 
 #include "die.h"
+#include "dlog.h"
 #include "editor_state.h"
 
 void editor_open(char *filename)
@@ -38,4 +41,29 @@ void editor_open(char *filename)
 
     free(line);
     fclose(fp);
+}
+
+void editor_save()
+{
+    if (NULL == get_filename(NULL)) return;
+
+    int fd = open(get_filename(NULL), O_RDWR | O_CREAT, 0644);
+
+    if (fd != -1 && ftruncate(fd, 0) >= 0)
+    {
+        int len = 0;
+        for (int i = 0; i < get_file_lines(); i++)
+        {
+            write(fd, get_line_chars(i), get_line_size(i));
+            write(fd, "\n", 1);
+            len += get_line_size(i) + 1;
+        }
+        
+        close(fd);
+        editor_set_status_message("%d bytes written to disk", len);
+        return;
+    }
+
+    editor_set_status_message("Can't save! I/O error: %s", strerror(errno));
+    if (fd != -1) close(fd);
 }

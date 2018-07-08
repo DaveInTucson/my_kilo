@@ -15,6 +15,7 @@
 const char ESCAPE_CHAR = '\x1b';
 
 enum editorKey {
+    BACKSPACE = 127,
     ARROW_LEFT  = 1000,
     ARROW_RIGHT,
     ARROW_UP,
@@ -181,10 +182,18 @@ void editor_process_keypress(keypress_t c)
 
     switch (c)
     {
+    case '\r':
+        /* TODO */
+        break;
+
     case CTRL_KEY('q'):
         write_str(clear_screen);
         write_str(home_cursor);
         exit(0);
+        break;
+
+    case CTRL_KEY('s'):
+        editor_save();
         break;
 
     case HOME_KEY:
@@ -196,6 +205,12 @@ void editor_process_keypress(keypress_t c)
             set_cursor_x(get_line_size(get_cursor_y()));
 	break;
 	
+    case BACKSPACE:
+    case CTRL_KEY('h'):
+    case DEL_KEY:
+        /* TODO */
+        break;
+
     case PAGE_UP: 
         editor_move_cursor(0, -get_screen_height());
 	break;
@@ -208,6 +223,10 @@ void editor_process_keypress(keypress_t c)
     case ARROW_DOWN : editor_move_cursor( 0,  1); break;
     case ARROW_LEFT : editor_move_cursor(-1,  0); break;
     case ARROW_RIGHT: editor_move_cursor( 1,  0); break;
+
+    case CTRL_KEY('l'):
+    case '\x1b':
+        break;
 
     default:
         editor_insert_char(c);

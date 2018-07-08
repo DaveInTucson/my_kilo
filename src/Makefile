@@ -17,7 +17,7 @@ editor_state.o: editor_state.c editor_state.h die.h
 
 term_buffer.o: term_buffer.h strings.h die.h dlog.h
 
-file-io.o: file-io.c file-io.h editor_state.h die.h
+file-io.o: file-io.c file-io.h editor_state.h die.h dlog.h
 
 strings.h: strings.in
 	${STRINGS2C} strings.in

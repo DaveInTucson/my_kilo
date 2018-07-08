@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     if (argc >= 2)
 	editor_open(argv[1]);
     
-    editor_set_status_message("HELP: Ctrl-Q = quit");
+    editor_set_status_message("HELP: Ctrl-S = Save | Ctrl-Q = quit");
 
     while (1)
     {
