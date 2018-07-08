@@ -3,7 +3,7 @@
 This file is to keep track of where I am in `snaptoken`'s 184 steps of
 implementing the kilo editor.
 
-- * - [Table of contents](https://viewsourcecode.org/snaptoken/kilo/index.html)
+* [Table of contents](https://viewsourcecode.org/snaptoken/kilo/index.html)
 
 ## Chapter 1: - [Setup](https://viewsourcecode.org/snaptoken/kilo/01.setup.html)
 
@@ -119,10 +119,10 @@ implementing the kilo editor.
 
 ## Chapter 5: - [A text editor](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html)
 
-- [ ] Step 101: Insert ordinary characters
-- [ ] Step 102: 
-- [ ] Step 103: 
-- [ ] Step 104: Prevent inserting special characters
+- [x] Step 101: [Insert ordinary characters](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#insert-ordinary-characters) - `editor_line_insert_char`
+- [x] Step 102: Insert ordinary characters - `editor_insert_char`
+- [x] Step 103: Insert ordinary characters - call `editor_insert_char` from `editor_process_keypress`
+- [ ] Step 104: [Prevent inserting special characters](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#prevent-inserting-special-characters)
 - [ ] Step 105: Save to disk
 - [ ] Step 106: 
 - [ ] Step 107: 

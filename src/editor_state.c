@@ -123,3 +123,22 @@ void editor_set_status_message(const char* fmt, ...)
 
     g_editor_state.statusmsg_time = time(NULL);
 }
+
+void editor_line_insert_char(editor_line *line, int at, int c)
+{
+    if (at < 0 || at > line->size) at = line->size;
+    line->chars = realloc(line->chars, line->size + 2);
+    memmove(&line->chars[at + 1], &line->chars[at], line->size - at + 1);
+    line->size++;
+    line->chars[at] = c;
+    editor_update_line(line);
+}
+
+void editor_insert_char(int c)
+{
+    if (get_cursor_y() == get_file_lines())
+        append_file_line("", 0);
+
+    editor_line_insert_char(get_line(get_cursor_y()), get_cursor_x(), c);
+    set_cursor_x(get_cursor_x() + 1);
+}

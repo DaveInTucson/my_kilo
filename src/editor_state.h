@@ -87,4 +87,6 @@ void editor_set_status_message(const char* fmt, ...);
 static inline char* get_status_buffer() { return g_editor_state.statusmsg; }
 static inline time_t get_status_time() { return g_editor_state.statusmsg_time; }
 
+void editor_insert_char(int c);
+
 #endif /* EDITOR_STATE_H */

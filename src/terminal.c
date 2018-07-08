@@ -208,5 +208,8 @@ void editor_process_keypress(keypress_t c)
     case ARROW_DOWN : editor_move_cursor( 0,  1); break;
     case ARROW_LEFT : editor_move_cursor(-1,  0); break;
     case ARROW_RIGHT: editor_move_cursor( 1,  0); break;
+
+    default:
+        editor_insert_char(c);
     }
 }
