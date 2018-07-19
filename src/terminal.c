@@ -12,6 +12,8 @@
 #include "die.h"
 #include "strings.h"
 
+#define KILO_QUIT_TIMES 3
+
 #define CTRL_KEY(k) ((k) & 0x1f)
 const char ESCAPE_CHAR = '\x1b';
 
@@ -178,6 +180,8 @@ void editor_move_cursor(int dcx, int dcy)
 
 void editor_process_keypress(keypress_t c)
 {
+    static int quit_times = KILO_QUIT_TIMES;
+
     string_const clear_screen = get_clear_screen_str();
     string_const home_cursor  = get_home_cursor_str();
 
@@ -188,6 +192,15 @@ void editor_process_keypress(keypress_t c)
         break;
 
     case CTRL_KEY('q'):
+        if (is_dirty() && quit_times > 0)
+        {
+            editor_set_status_message("WARNING!!! File has unsaved changes. "
+                                      "Press Ctrl-Q %d more times to quit.",
+                                      quit_times);
+            quit_times--;
+            return;
+        }
+        
         write_str(clear_screen);
         write_str(home_cursor);
         exit(0);

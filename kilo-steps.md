@@ -133,7 +133,7 @@ implementing the kilo editor.
 - [x] Step 112: Dirty Flag - show on status line
 - [x] Step 113: Dirty Flag - update when file is changed
 - [x] Step 114: Dirty Flag - mark file clean when loaded or saved
-- [ ] Step 115: [Quit confirmation](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#quit-confirmation)
+- [x] Step 115: [Quit confirmation](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#quit-confirmation)
 - [ ] Step 116: [Simple backspacing](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#simple-backspacing) - <tt>editor_line_del_char</tt>
 - [ ] Step 117: Simple backspacing - <tt>editor_del_char</tt>
 - [ ] Step 118: Simple backspacing - Process `DEL_KEY`
@@ -216,4 +216,4 @@ implementing the kilo editor.
 * [Use a better data structure to store the file text and changes](http://www.averylaird.com/programming/the%20text%20editor/2017/09/30/the-piece-table/)
 * Create a better abstraction/encapsulation between the screen display and the file (maybe some kind of MVC structure)
 * [Fix the way tabs work](http://blogintucson.blogspot.com/2018/06/a-bug-in-kilo-code.html)
-
+* Fix the way quit on dirty works
