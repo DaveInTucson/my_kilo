@@ -119,9 +119,10 @@ void editor_draw_status_bar(term_buffer* tb)
     tb_append_str(tb, get_colors_invert_str());
 
     char status[80], rstatus[80];
-    int len = snprintf(status, sizeof(status), "%.20s - %d lines",
+    int len = snprintf(status, sizeof(status), "%.20s - %d lines %s",
                        get_filename("[No name]"),
-                       get_file_lines());
+                       get_file_lines(),
+                       is_dirty() ? "(modified)" : "");
     
     int rlen = snprintf(rstatus, sizeof(rstatus), "%d/%d",
                         get_cursor_y() + 1, get_file_lines());

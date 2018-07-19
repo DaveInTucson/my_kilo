@@ -129,17 +129,17 @@ implementing the kilo editor.
 - [x] Step 108: Save to disk - error handling in <tt>editor_save</tt>
 - [x] Step 109: Save to disk - status message
 - [x] Step 110: Save to disk - <tt>editor_set_status_message</tt> prototype
-- [ ] Step 111: Dirty flag
-- [ ] Step 112: 
-- [ ] Step 113: 
-- [ ] Step 114: 
-- [ ] Step 115: Quit confirmation
-- [ ] Step 116: Simple backspacing
-- [ ] Step 117: 
-- [ ] Step 118: 
-- [ ] Step 119: Backspacing at the start of a line
-- [ ] Step 120: 
-- [ ] Step 121: 
+- [x] Step 111: [Dirty flag](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#dirty-flag) - declare and initialize
+- [x] Step 112: Dirty Flag - show on status line
+- [x] Step 113: Dirty Flag - update when file is changed
+- [x] Step 114: Dirty Flag - mark file clean when loaded or saved
+- [ ] Step 115: [Quit confirmation](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#quit-confirmation)
+- [ ] Step 116: [Simple backspacing](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#simple-backspacing) - <tt>editor_line_del_char</tt>
+- [ ] Step 117: Simple backspacing - <tt>editor_del_char</tt>
+- [ ] Step 118: Simple backspacing - Process `DEL_KEY`
+- [ ] Step 119: [Backspacing at the start of a line](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#backspacing-at-the-start-of-a-line) -
+- [ ] Step 120: Backspacing at the start of a line - 
+- [ ] Step 121: Backspacing at the start of a line - 
 - [ ] Step 122: The `Enter` key
 - [ ] Step 123: 
 - [ ] Step 124: 
@@ -210,4 +210,10 @@ implementing the kilo editor.
 - [ ] Step 183: 
 - [ ] Step 184: 
 
+# Potential improvements:
+
 * Appendix: [Ideas for features to add on your own](https://viewsourcecode.org/snaptoken/kilo/08.appendices.html#ideas-for-features-to-add-on-your-own)
+* [Use a better data structure to store the file text and changes](http://www.averylaird.com/programming/the%20text%20editor/2017/09/30/the-piece-table/)
+* Create a better abstraction/encapsulation between the screen display and the file (maybe some kind of MVC structure)
+* [Fix the way tabs work](http://blogintucson.blogspot.com/2018/06/a-bug-in-kilo-code.html)
+

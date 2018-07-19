@@ -27,6 +27,7 @@ typedef struct
     int numlines;
     editor_line *lines;
     char *filename;
+    int dirty;
     char statusmsg[80];
     time_t statusmsg_time;
     struct termios orig_termios;
@@ -88,5 +89,9 @@ static inline char* get_status_buffer() { return g_editor_state.statusmsg; }
 static inline time_t get_status_time() { return g_editor_state.statusmsg_time; }
 
 void editor_insert_char(int c);
+
+static inline void clear_dirty() { g_editor_state.dirty = 0; }
+static inline void set_dirty() { g_editor_state.dirty++; }
+static inline int  is_dirty() { return g_editor_state.dirty; }
 
 #endif /* EDITOR_STATE_H */

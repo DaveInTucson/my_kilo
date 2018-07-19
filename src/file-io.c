@@ -41,6 +41,7 @@ void editor_open(char *filename)
 
     free(line);
     fclose(fp);
+    clear_dirty();
 }
 
 void editor_save()
@@ -60,6 +61,7 @@ void editor_save()
         }
         
         close(fd);
+        clear_dirty();
         editor_set_status_message("%d bytes written to disk", len);
         return;
     }

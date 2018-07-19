@@ -92,7 +92,9 @@ void append_file_line(char* line, ssize_t linelen)
     editor_update_line(&g_editor_state.lines[last]);
     
     g_editor_state.numlines++;
+    set_dirty();
 }
+
 
 void init_file()
 {
@@ -101,6 +103,7 @@ void init_file()
     g_editor_state.numlines = 0;
     g_editor_state.lines = NULL;
     g_editor_state.filename = NULL;
+    g_editor_state.dirty = 0;
     g_editor_state.statusmsg[0] = '\0';
     g_editor_state.statusmsg_time = 0;
 }
@@ -132,6 +135,7 @@ void editor_line_insert_char(editor_line *line, int at, int c)
     line->size++;
     line->chars[at] = c;
     editor_update_line(line);
+    set_dirty();
 }
 
 void editor_insert_char(int c)

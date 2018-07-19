@@ -8,6 +8,7 @@
 #include <ctype.h>
 
 #include "editor_state.h"
+#include "file-io.h"
 #include "die.h"
 #include "strings.h"
 
