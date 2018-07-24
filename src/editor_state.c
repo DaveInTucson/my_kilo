@@ -156,14 +156,50 @@ void editor_line_del_char(editor_line *line, int at)
     set_dirty();
 }
 
+void editor_free_line(editor_line *line)
+{
+    free(line->render);
+    free(line->chars);
+}
+
+void editor_del_line(int at)
+{
+    if (at < 0 || at > get_file_lines()) return;
+    editor_free_line(get_line(at));
+    memmove(&g_editor_state.lines[at],
+            &g_editor_state.lines[at+1],
+            sizeof(editor_line) * (get_file_lines() - at - 1));
+    g_editor_state.numlines--;
+    set_dirty();
+}
+
+void editor_line_append_string(editor_line* line, char *s, size_t len)
+{
+    line->chars = realloc(line->chars, line->size + len + 1);
+    memcpy(&line->chars[line->size], s, len);
+    line->size += len;
+    line->chars[line->size] = '\0';
+    editor_update_line(line);
+    set_dirty();
+}
+
 void editor_del_char()
 {
     if (get_cursor_y() == get_file_lines()) return;
+    if (get_cursor_x() == 0 && get_cursor_y() == 0) return;
 
     editor_line *line = get_line(get_cursor_y());
     if( get_cursor_x() > 0)
     {
         editor_line_del_char(line, get_cursor_x() - 1);
         set_cursor_x(get_cursor_x() - 1);
+    }
+    else
+    {
+        editor_line *prev_line = get_line(get_cursor_y() -1);
+        set_cursor_x(prev_line->size);
+        editor_line_append_string(prev_line, line->chars, line->size);
+        editor_del_line(get_cursor_y());
+        set_cursor_y(get_cursor_y() - 1);
     }
 }

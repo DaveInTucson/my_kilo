@@ -137,13 +137,13 @@ implementing the kilo editor.
 - [x] Step 116: [Simple backspacing](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#simple-backspacing) - <tt>editor_line_del_char</tt>
 - [x] Step 117: Simple backspacing - <tt>editor_del_char</tt>
 - [x] Step 118: Simple backspacing - Process `DEL_KEY`
-- [x] Step 119: [Backspacing at the start of a line](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#backspacing-at-the-start-of-a-line) -
-- [ ] Step 120: Backspacing at the start of a line - 
-- [ ] Step 121: Backspacing at the start of a line - 
-- [ ] Step 122: The `Enter` key
-- [ ] Step 123: 
-- [ ] Step 124: 
-- [ ] Step 125: 
+- [x] Step 119: [Backspacing at the start of a line](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#backspacing-at-the-start-of-a-line) - <tt>editor_free_line</tt> and <tt>editor_del_line</tt>
+- [x] Step 120: Backspacing at the start of a line - <tt>editor_line_append_string</tt>
+- [x] Step 121: Backspacing at the start of a line - update <tt>editor_del_char</tt>
+- [ ] Step 122: [The `Enter` key](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#the-enter-key) -
+- [ ] Step 123: The `Enter` key -
+- [ ] Step 124: The `Enter` key -
+- [ ] Step 125: The `Enter` key -
 - [ ] Step 126: Save as...
 - [ ] Step 127: 
 - [ ] Step 128: 
