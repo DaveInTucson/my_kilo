@@ -146,3 +146,24 @@ void editor_insert_char(int c)
     editor_line_insert_char(get_line(get_cursor_y()), get_cursor_x(), c);
     set_cursor_x(get_cursor_x() + 1);
 }
+
+void editor_line_del_char(editor_line *line, int at)
+{
+    if (at < 0 || at >= line->size) return;
+    memmove(&line->chars[at], &line->chars[at+1], line->size - at);
+    line->size--;
+    editor_update_line(line);
+    set_dirty();
+}
+
+void editor_del_char()
+{
+    if (get_cursor_y() == get_file_lines()) return;
+
+    editor_line *line = get_line(get_cursor_y());
+    if( get_cursor_x() > 0)
+    {
+        editor_line_del_char(line, get_cursor_x() - 1);
+        set_cursor_x(get_cursor_x() - 1);
+    }
+}

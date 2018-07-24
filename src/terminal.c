@@ -222,7 +222,8 @@ void editor_process_keypress(keypress_t c)
     case BACKSPACE:
     case CTRL_KEY('h'):
     case DEL_KEY:
-        /* TODO */
+        if (c == DEL_KEY) editor_move_cursor(-1, 0);
+        editor_del_char();
         break;
 
     case PAGE_UP: 

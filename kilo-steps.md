@@ -134,10 +134,10 @@ implementing the kilo editor.
 - [x] Step 113: Dirty Flag - update when file is changed
 - [x] Step 114: Dirty Flag - mark file clean when loaded or saved
 - [x] Step 115: [Quit confirmation](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#quit-confirmation)
-- [ ] Step 116: [Simple backspacing](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#simple-backspacing) - <tt>editor_line_del_char</tt>
-- [ ] Step 117: Simple backspacing - <tt>editor_del_char</tt>
-- [ ] Step 118: Simple backspacing - Process `DEL_KEY`
-- [ ] Step 119: [Backspacing at the start of a line](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#backspacing-at-the-start-of-a-line) -
+- [x] Step 116: [Simple backspacing](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#simple-backspacing) - <tt>editor_line_del_char</tt>
+- [x] Step 117: Simple backspacing - <tt>editor_del_char</tt>
+- [x] Step 118: Simple backspacing - Process `DEL_KEY`
+- [x] Step 119: [Backspacing at the start of a line](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#backspacing-at-the-start-of-a-line) -
 - [ ] Step 120: Backspacing at the start of a line - 
 - [ ] Step 121: Backspacing at the start of a line - 
 - [ ] Step 122: The `Enter` key
