@@ -75,21 +75,25 @@ void editor_update_line(editor_line* line)
 }
 
 
-void append_file_line(char* line, ssize_t linelen)
+void insert_file_line(int at, char* line, ssize_t linelen)
 {
+    if (at < 0 || at > get_file_lines()) return;
+
     g_editor_state.lines = realloc(
 	g_editor_state.lines,
 	sizeof(editor_line) * (g_editor_state.numlines + 1));
+    memmove(&g_editor_state.lines[at+1],
+            &g_editor_state.lines[at],
+            sizeof(editor_line) * (get_file_lines() - at));
 
-    int last = g_editor_state.numlines;
-    g_editor_state.lines[last].size = linelen;
-    g_editor_state.lines[last].chars = malloc(linelen + 1);
-    memcpy(g_editor_state.lines[last].chars, line, linelen);
-    g_editor_state.lines[last].chars[linelen] = '\0';
+    g_editor_state.lines[at].size = linelen;
+    g_editor_state.lines[at].chars = malloc(linelen + 1);
+    memcpy(g_editor_state.lines[at].chars, line, linelen);
+    g_editor_state.lines[at].chars[linelen] = '\0';
 
-    g_editor_state.lines[last].rsize = 0;
-    g_editor_state.lines[last].render = NULL;
-    editor_update_line(&g_editor_state.lines[last]);
+    g_editor_state.lines[at].rsize = 0;
+    g_editor_state.lines[at].render = NULL;
+    editor_update_line(&g_editor_state.lines[at]);
     
     g_editor_state.numlines++;
     set_dirty();
@@ -145,6 +149,28 @@ void editor_insert_char(int c)
 
     editor_line_insert_char(get_line(get_cursor_y()), get_cursor_x(), c);
     set_cursor_x(get_cursor_x() + 1);
+}
+
+void editor_insert_newline()
+{
+    if (get_cursor_x() == 0)
+    {
+        insert_file_line(get_cursor_y(), "", 0);
+    }
+    else
+    {
+        editor_line* line = get_line(get_cursor_y());
+        insert_file_line(get_cursor_y() + 1,
+                           &line->chars[get_cursor_x()],
+                           line->size - get_cursor_x());
+        line = get_line(get_cursor_y());
+        line->size = get_cursor_x();
+        line->chars[line->size] = '\0';
+        editor_update_line(line);
+    }
+
+    set_cursor_y(get_cursor_y() + 1);
+    set_cursor_x(0);
 }
 
 void editor_line_del_char(editor_line *line, int at)

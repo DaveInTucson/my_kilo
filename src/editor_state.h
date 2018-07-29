@@ -78,7 +78,11 @@ static inline int get_render_size(int i)
 static inline char* get_render_chars(int i)
 { return i < get_file_lines() ? g_editor_state.lines[i].render : NULL; }
 
-void append_file_line(char* line, ssize_t linelen);
+void insert_file_line(int at, char* line, ssize_t linelen);
+    
+static inline void append_file_line(char* line, ssize_t linelen)
+{ insert_file_line(get_file_lines(), line, linelen); }
+
 void init_file();
 void set_filename(const char* filename);
 static inline char* get_filename(char * alternate)
@@ -90,9 +94,12 @@ static inline time_t get_status_time() { return g_editor_state.statusmsg_time; }
 
 void editor_insert_char(int c);
 void editor_del_char();
+void editor_insert_newline();
 
 static inline void clear_dirty() { g_editor_state.dirty = 0; }
 static inline void set_dirty() { g_editor_state.dirty++; }
 static inline int  is_dirty() { return g_editor_state.dirty; }
+
+
 
 #endif /* EDITOR_STATE_H */

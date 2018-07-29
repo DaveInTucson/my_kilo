@@ -188,7 +188,7 @@ void editor_process_keypress(keypress_t c)
     switch (c)
     {
     case '\r':
-        /* TODO */
+        editor_insert_newline();
         break;
 
     case CTRL_KEY('q'):

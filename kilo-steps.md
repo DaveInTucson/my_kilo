@@ -140,15 +140,15 @@ implementing the kilo editor.
 - [x] Step 119: [Backspacing at the start of a line](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#backspacing-at-the-start-of-a-line) - <tt>editor_free_line</tt> and <tt>editor_del_line</tt>
 - [x] Step 120: Backspacing at the start of a line - <tt>editor_line_append_string</tt>
 - [x] Step 121: Backspacing at the start of a line - update <tt>editor_del_char</tt>
-- [ ] Step 122: [The `Enter` key](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#the-enter-key) -
-- [ ] Step 123: The `Enter` key -
-- [ ] Step 124: The `Enter` key -
-- [ ] Step 125: The `Enter` key -
-- [ ] Step 126: Save as...
-- [ ] Step 127: 
-- [ ] Step 128: 
-- [ ] Step 129: 
-- [ ] Step 130: 
+- [x] Step 122: [The `Enter` key](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#the-enter-key) - change <tt>editor_append_line</tt> to  <tt>editor_insert_line</tt>
+- [x] Step 123: The `Enter` key - redefine <tt>editor_append_line</tt> as simple inline call to <tt>editor_insert_line</tt>
+- [x] Step 124: The `Enter` key - <tt>editor_insert_newline</tt>
+- [x] Step 125: The `Enter` key - call <tt>editor_insert_newline</tt> from <tt>editor_process_keypress</tt>
+- [ ] Step 126: [Save as...](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#save-as) - <tt>editor_prompt</tt> function
+- [ ] Step 127: Save as... - call <tt>editor_prompt</tt> from <tt>editor_save</tt>
+- [ ] Step 128: Save as... - allow cancelling in <tt>editor_prompt</tt>
+- [ ] Step 129: Save as... - update <tt>editor_save</tt> to handle cancelled prompt
+- [ ] Step 130: Save as... - allow backspacing in <tt>editor_prompt</tt>
 
 ## Chapter 6: - [Search](https://viewsourcecode.org/snaptoken/kilo/06.search.html)
 
