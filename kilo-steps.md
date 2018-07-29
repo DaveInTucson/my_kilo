@@ -144,18 +144,18 @@ implementing the kilo editor.
 - [x] Step 123: The `Enter` key - redefine <tt>editor_append_line</tt> as simple inline call to <tt>editor_insert_line</tt>
 - [x] Step 124: The `Enter` key - <tt>editor_insert_newline</tt>
 - [x] Step 125: The `Enter` key - call <tt>editor_insert_newline</tt> from <tt>editor_process_keypress</tt>
-- [ ] Step 126: [Save as...](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#save-as) - <tt>editor_prompt</tt> function
-- [ ] Step 127: Save as... - call <tt>editor_prompt</tt> from <tt>editor_save</tt>
-- [ ] Step 128: Save as... - allow cancelling in <tt>editor_prompt</tt>
-- [ ] Step 129: Save as... - update <tt>editor_save</tt> to handle cancelled prompt
-- [ ] Step 130: Save as... - allow backspacing in <tt>editor_prompt</tt>
+- [x] Step 126: [Save as...](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#save-as) - <tt>editor_prompt</tt> function
+- [x] Step 127: Save as... - call <tt>editor_prompt</tt> from <tt>editor_save</tt>
+- [x] Step 128: Save as... - allow cancelling in <tt>editor_prompt</tt>
+- [x] Step 129: Save as... - update <tt>editor_save</tt> to handle cancelled prompt
+- [x] Step 130: Save as... - allow backspacing in <tt>editor_prompt</tt>
 
 ## Chapter 6: - [Search](https://viewsourcecode.org/snaptoken/kilo/06.search.html)
 
-- [ ] Step 131: Search
-- [ ] Step 132: 
-- [ ] Step 133: 
-- [ ] Step 134: 
+- [ ] Step 131: [Search] - <tt>editor_find</tt>
+- [ ] Step 132: Search - <tt>editor_row__rx_to_cx</tt>
+- [ ] Step 133: Search - call <tt>editor_row_rx_to_cx</tt> from <tt>editor_find</tt>
+- [ ] Step 134: Search - invoke <tt>editor_find</tt> with `Ctrl+f`
 - [ ] Step 135: Incremental Search
 - [ ] Step 136: 
 - [ ] Step 137: 

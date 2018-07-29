@@ -6,6 +6,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 const char* g_kilo_version = "0.0.1";
 
@@ -156,6 +157,8 @@ void editor_draw_message_bar(term_buffer* tb)
     if (msglen && time(NULL) - get_status_time() < 5)
         tb_append(tb, get_status_buffer(), msglen);
 }
+
+
 
 
 void editor_refresh_screen()

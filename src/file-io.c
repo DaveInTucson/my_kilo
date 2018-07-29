@@ -16,6 +16,7 @@
 #include "die.h"
 #include "dlog.h"
 #include "editor_state.h"
+#include "terminal.h"
 
 void editor_open(char *filename)
 {
@@ -46,7 +47,16 @@ void editor_open(char *filename)
 
 void editor_save()
 {
-    if (NULL == get_filename(NULL)) return;
+    if (NULL == get_filename(NULL))
+    {
+        char *name = editor_prompt("Save as: %s (ESC to cancel)");
+        if (NULL == name)
+        {
+            editor_set_status_message("Save aborted");
+            return;
+        }
+        set_filename(name);
+    }
 
     int fd = open(get_filename(NULL), O_RDWR | O_CREAT, 0644);
 

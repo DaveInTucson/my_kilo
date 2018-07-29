@@ -11,6 +11,7 @@
 #include "file-io.h"
 #include "die.h"
 #include "strings.h"
+#include "output.h"
 
 #define KILO_QUIT_TIMES 3
 
@@ -175,6 +176,53 @@ void editor_move_cursor(int dcx, int dcy)
     
     set_cursor_x(cx);
     set_cursor_y(cy);
+}
+
+
+char *editor_prompt(char *prompt)
+{
+    size_t bufsize = 128;
+    char *buf = malloc(bufsize);
+
+    size_t buflen = 0;
+    buf[0] = '\0';
+
+    while(1)
+    {
+        editor_set_status_message(prompt, buf);
+        editor_refresh_screen();
+
+        int c = editor_read_key();
+        if (c == DEL_KEY || c == CTRL_KEY('h') || c == BACKSPACE)
+        {
+            if (buflen != 0)
+                buf[--buflen] = '\0';
+        }
+        
+        if (c == ESCAPE_CHAR)
+        {
+            editor_set_status_message("");
+            free(buf);
+            return NULL;
+        }
+        
+        if (c == '\r')
+        {
+            if (buflen != 0)
+                editor_set_status_message("");
+            return buf;
+        }
+        else if (!iscntrl(c) && c < 128)
+        {
+            if (buflen == bufsize - 1)
+            {
+                bufsize *= 2;
+                buf = realloc(buf, bufsize);
+            }
+            buf[buflen++] = c;
+            buf[buflen] = '\0';
+        }
+    }
 }
 
 
