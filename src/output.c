@@ -83,6 +83,23 @@ int editor_row_cx_to_rx(editor_line *line, int cx)
 }
 
 
+int editor_row_rx_to_cx(editor_line *line, int rx)
+{
+    int curr_rx = 0;
+    int cx;
+    for (cx = 0; cx < line->size; cx++)
+    {
+        if (line->chars[cx] == '\t')
+            curr_rx += (KILO_TAB_STOP - 1) - (curr_rx % KILO_TAB_STOP);
+        curr_rx++;
+
+        if (curr_rx > rx) return cx;
+    }
+
+    return cx;
+}
+
+
 void editor_scroll()
 {
     set_cursor_rx(0);

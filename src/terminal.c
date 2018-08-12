@@ -12,6 +12,7 @@
 #include "die.h"
 #include "strings.h"
 #include "output.h"
+#include "find.h"
 
 #define KILO_QUIT_TIMES 3
 
@@ -267,6 +268,10 @@ void editor_process_keypress(keypress_t c)
             set_cursor_x(get_line_size(get_cursor_y()));
 	break;
 	
+    case CTRL_KEY('f'):
+        editor_find();
+        break;
+        
     case BACKSPACE:
     case CTRL_KEY('h'):
     case DEL_KEY:

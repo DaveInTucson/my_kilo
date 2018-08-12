@@ -152,10 +152,10 @@ implementing the kilo editor.
 
 ## Chapter 6: - [Search](https://viewsourcecode.org/snaptoken/kilo/06.search.html)
 
-- [ ] Step 131: [Search] - <tt>editor_find</tt>
-- [ ] Step 132: Search - <tt>editor_row__rx_to_cx</tt>
-- [ ] Step 133: Search - call <tt>editor_row_rx_to_cx</tt> from <tt>editor_find</tt>
-- [ ] Step 134: Search - invoke <tt>editor_find</tt> with `Ctrl+f`
+- [x] Step 131: [Search] - <tt>editor_find</tt>
+- [x] Step 132: Search - <tt>editor_row__rx_to_cx</tt>
+- [x] Step 133: Search - call <tt>editor_row_rx_to_cx</tt> from <tt>editor_find</tt>
+- [x] Step 134: Search - invoke <tt>editor_find</tt> with `Ctrl+f`
 - [ ] Step 135: Incremental Search
 - [ ] Step 136: 
 - [ ] Step 137: 
