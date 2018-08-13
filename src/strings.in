@@ -10,6 +10,8 @@ clear_row       \x1b[K
 cursor_pos_fmt  \x1b[%d;%dH
 colors_invert   \x1b[7m
 colors_normal   \x1b[m
+color_red       \x1b[31m
+color_white     \x1b[39m
 
 # other stuff
 

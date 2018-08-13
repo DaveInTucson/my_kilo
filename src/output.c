@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 const char* g_kilo_version = "0.0.1";
 
@@ -44,7 +45,21 @@ void editor_draw_rows(term_buffer* tb)
             if (len < 0) len = 0;
 	    if (len > get_screen_width())
 		len = get_screen_width();
-	    tb_append(tb, get_render_chars(line_row) + get_col_offset(), len);
+            char *c = &get_render_chars(line_row)[get_col_offset()];
+            for (int j = 0; j < len; j++)
+            {
+                if (isdigit(c[j]))
+                {
+                    tb_append_str(tb, get_color_red_str());
+                    tb_append(tb, &c[j], 1);
+                    tb_append_str(tb, get_color_white_str());
+                }
+                else
+                {
+                    tb_append(tb, &c[j], 1);
+                }
+                    
+            }
 	}
         else if (get_file_lines() == 0 && y == get_screen_height()/3)
             append_welcome_message(tb);

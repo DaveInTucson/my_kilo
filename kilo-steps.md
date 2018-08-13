@@ -166,16 +166,16 @@ implementing the kilo editor.
 
 ## Chapter 7: - [Syntax highlighting](https://viewsourcecode.org/snaptoken/kilo/07.syntaxHighlighting.html)
 
-- [ ] Step 142: Colorful digits
-- [ ] Step 143: Refactor syntax highlighting
-- [ ] Step 144: 
-- [ ] Step 145: 
-- [ ] Step 146: 
-- [ ] Step 147: 
-- [ ] Step 148: 
-- [ ] Step 149: 
-- [ ] Step 150: Colorful search results
-- [ ] Step 151: 
+- [x] Step 142: [Colorful digits](https://viewsourcecode.org/snaptoken/kilo/07.syntaxHighlighting.html#colorful-digits)
+- [ ] Step 143: [Refactor syntax highlighting](https://viewsourcecode.org/snaptoken/kilo/07.syntaxHighlighting.html#refactor-syntax-highlighting) - adding highlight array
+- [ ] Step 144: Refactor syntax highlighting - `editor_highlight` enum
+- [ ] Step 145: Refactor syntax highlighting - define `editor_update_syntax`
+- [ ] Step 146: Refactor syntax highlighting - call `editor_update_syntax`
+- [ ] Step 147: Refactor syntax highlighting - `editor_syntax_to_color`
+- [ ] Step 148: Refactor syntax highlighting - changes to `editor_draw_rows`
+- [ ] Step 149: Refactor syntax highlighting - more changes to `editor_draw_rows`
+- [ ] Step 150: [Colorful search results](https://viewsourcecode.org/snaptoken/kilo/07.syntaxHighlighting.html#colorful-search-results) - 
+- [ ] Step 151: Colorful search results - 
 - [ ] Step 152: Restore syntax highlighting after search
 - [ ] Step 153: Colorful numbers
 - [ ] Step 154: 
