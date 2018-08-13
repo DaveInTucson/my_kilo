@@ -27,9 +27,21 @@ void editor_find_callback(char *query, int key)
 
 void editor_find()
 {
+    int saved_cx = get_cursor_x();
+    int saved_cy = get_cursor_y();
+    int saved_col_offset = get_col_offset();
+    int saved_line_offset = get_line_offset();
+
     char *query = editor_prompt("Search: %s (ESC to cancel)", 
                                 editor_find_callback);
 
     if (query)
         free(query);
+    else
+    {
+        set_cursor_x(saved_cx);
+        set_cursor_y(saved_cy);
+        set_col_offset(saved_col_offset);
+        set_line_offset(saved_line_offset);
+    }
 }
