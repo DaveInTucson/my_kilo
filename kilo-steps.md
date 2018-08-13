@@ -160,9 +160,9 @@ implementing the kilo editor.
 - [x] Step 136: Incremental Search - pass `NULL` in callso to `editor_prompt` that don't use it
 - [x] Step 137: Incremental Search - `editor_find_callback`
 - [x] Step 138: [Restore cursor position when cancelling search](https://viewsourcecode.org/snaptoken/kilo/06.search.html#restore-cursor-position-when-cancelling-search)
-- [ ] Step 139: [Search forward and backward](https://viewsourcecode.org/snaptoken/kilo/06.search.html#search-forward-and-backward) - code in `editor_find_callback` to set `direction` variable using arrow keys
-- [ ] Step 140: Search forward and backward - modify search algorithm to use `direction` variable
-- [ ] Step 141: Search forward and backward - update prompt string
+- [x] Step 139: [Search forward and backward](https://viewsourcecode.org/snaptoken/kilo/06.search.html#search-forward-and-backward) - code in `editor_find_callback` to set `direction` variable using arrow keys
+- [x] Step 140: Search forward and backward - modify search algorithm to use `direction` variable
+- [x] Step 141: Search forward and backward - update prompt string
 
 ## Chapter 7: - [Syntax highlighting](https://viewsourcecode.org/snaptoken/kilo/07.syntaxHighlighting.html)
 

@@ -19,19 +19,6 @@
 #define CTRL_KEY(k) ((k) & 0x1f)
 const char ESCAPE_CHAR = '\x1b';
 
-enum editorKey {
-    BACKSPACE = 127,
-    ARROW_LEFT  = 1000,
-    ARROW_RIGHT,
-    ARROW_UP,
-    ARROW_DOWN,
-    DEL_KEY,
-    HOME_KEY,
-    END_KEY,
-    PAGE_UP,
-    PAGE_DOWN,
-
-};
 
 static int write_str(string_const sc)
 {
