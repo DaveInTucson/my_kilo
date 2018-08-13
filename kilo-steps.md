@@ -79,43 +79,43 @@ implementing the kilo editor.
 - [x] Step 61: [Multiple lines](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#multiple-lines) - making file lines an array, initializing
 - [x] Step 62: Multiple lines - appending a line in a function
 - [x] Step 63: Multiple lines - appending lines to an array
-- [x] Step 64: Multiple lines - fetching indext lines in <tt>editor_draw_rows</tt>
+- [x] Step 64: Multiple lines - fetching indext lines in `editor_draw_rows`
 - [x] Step 65: Multiple lines - looping to read a while file
-- [x] Step 66: [Vertical scrolling](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#vertical-scrolling) - declare and initialize <tt>line_offset</tt>
-- [x] Step 67: Vertical scrolling - get offset line in <tt>editor_draw_rows</tt>
-- [x] Step 68: Vertical scrolling - add the <tt>editor_scroll</tt> function
+- [x] Step 66: [Vertical scrolling](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#vertical-scrolling) - declare and initialize `line_offset`
+- [x] Step 67: Vertical scrolling - get offset line in `editor_draw_rows`
+- [x] Step 68: Vertical scrolling - add the `editor_scroll` function
 - [x] Step 69: Vertical scrolling - allow the cursor to scroll past the bottom of the screen
 - [x] Step 70: Vertical scrolling - position the cursor correctly based on new interpretation of cy
-- [x] Step 71: [Horizontal scrolling](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#horizontal-scrolling) - declare and initialize <tt>col_offset</tt>
-- [x] Step 72: Horizontal scrolling - update <tt>editor_draw_rows</tt>
-- [x] Step 73: Horizontal scrolling - update <tt>editor_scroll</tt>
-- [x] Step 74: Horizontal scrolling - update <tt>editor_move_cursor</tt>
-- [x] Step 75: Horizontal scrolling - update <tt>editor_refresh_screen</tt>
+- [x] Step 71: [Horizontal scrolling](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#horizontal-scrolling) - declare and initialize `col_offset`
+- [x] Step 72: Horizontal scrolling - update `editor_draw_rows`
+- [x] Step 73: Horizontal scrolling - update `editor_scroll`
+- [x] Step 74: Horizontal scrolling - update `editor_move_cursor`
+- [x] Step 75: Horizontal scrolling - update `editor_refresh_screen`
 - [x] Step 76: [Limit scrolling to the right](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#limit-scrolling-to-the-right)
 - [x] Step 77: [Snap cursor to end of line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#snap-cursor-to-end-of-line)
 - [x] Step 78: [Moving left at the start of a line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#moving-left-at-the-start-of-a-line)
 - [x] Step 79: [Moving right at the end of a line](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#moving-right-at-the-end-of-a-line)
-- [x] Step 80: [Rendering tabs](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#rendering-tabs) - Declare and initialize <tt>rsize</tt>, <tt>render</tt>
-- [x] Step 81: Rendering tabs - <tt>editor_update_line</tt>
-- [x] Step 82: Rendering tabs - update <tt>editor_draw_rows</tt> to use <tt>rsize</tt>, <tt>render</tt>
-- [x] Step 83: Rendering tabs - modify <tt>editor_update_line</tt> to expand tabs to spaces
+- [x] Step 80: [Rendering tabs](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#rendering-tabs) - Declare and initialize `rsize`, `render`
+- [x] Step 81: Rendering tabs - `editor_update_line`
+- [x] Step 82: Rendering tabs - update `editor_draw_rows` to use `rsize`, `render`
+- [x] Step 83: Rendering tabs - modify `editor_update_line` to expand tabs to spaces
 - [x] Step 84: Rendering tabs - make tab stop length a constant
 - [x] Step 85: [Tabs and the cursor](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#tabs-and-the-cursor) - declare and initialize `rx`
-- [x] Step 86: Tabs and the cursor - update <tt>editor_scroll</tt>
-- [x] Step 87: Tabs and the cursor - update <tt>editor_refresh_screen</tt>
-- [x] Step 88: Tabs and the cursor - calculate <tt>rx</tt> in <tt>editor_row_cx_to_rx</tt>
-- [x] Step 89: Tabs and the cursor - call <tt>editor_row_cx_to_rx</tt> from <tt>editor_scroll</tt>
+- [x] Step 86: Tabs and the cursor - update `editor_scroll`
+- [x] Step 87: Tabs and the cursor - update `editor_refresh_screen`
+- [x] Step 88: Tabs and the cursor - calculate `rx` in `editor_row_cx_to_rx`
+- [x] Step 89: Tabs and the cursor - call `editor_row_cx_to_rx` from `editor_scroll`
 - [x] Step 90: [Scrolling with `Page Up` and `Page Down`](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#scrolling-with-page-up-and-page-down)
 - [x] Step 91: [Moving to the end of the line with `End`](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#move-to-the-end-of-the-line-with-end)
 - [x] Step 92: [Status bar](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#status-bar) - reserve the bottom line of the display
-- [x] Step 93: Status bar - <tt>editor_draw_status_bar</tt>
+- [x] Step 93: Status bar - `editor_draw_status_bar`
 - [x] Step 94: Status bar - storing the file name
 - [x] Step 95: Status bar - displaying file name, lines
 - [x] Step 96: Status bar - show the current line number
 - [x] Step 97: [Status Message](https://viewsourcecode.org/snaptoken/kilo/04.aTextViewer.html#status-message) - declare and initialize storage 
-- [x] Step 98: Status Message - <tt>editor_set_status_message</tt>, initial status message
+- [x] Step 98: Status Message - `editor_set_status_message`, initial status message
 - [x] Step 99: Status Message - reserving a screen line for the status messsage
-- [x] Step 100: Status Message - <tt>editor_draw_message_bar</tt>
+- [x] Step 100: Status Message - `editor_draw_message_bar`
 
 ## Chapter 5: - [A text editor](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html)
 
@@ -126,43 +126,43 @@ implementing the kilo editor.
 - [x] Step 105: [Save to disk](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#save-to-disk) - copying the file's text to a buffer (I skipped this)
 - [x] Step 106: Save to disk - writing the file's text to a file
 - [x] Step 107: Save to disk - Saving with Ctrl+S
-- [x] Step 108: Save to disk - error handling in <tt>editor_save</tt>
+- [x] Step 108: Save to disk - error handling in `editor_save`
 - [x] Step 109: Save to disk - status message
-- [x] Step 110: Save to disk - <tt>editor_set_status_message</tt> prototype
+- [x] Step 110: Save to disk - `editor_set_status_message` prototype
 - [x] Step 111: [Dirty flag](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#dirty-flag) - declare and initialize
 - [x] Step 112: Dirty Flag - show on status line
 - [x] Step 113: Dirty Flag - update when file is changed
 - [x] Step 114: Dirty Flag - mark file clean when loaded or saved
 - [x] Step 115: [Quit confirmation](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#quit-confirmation)
-- [x] Step 116: [Simple backspacing](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#simple-backspacing) - <tt>editor_line_del_char</tt>
-- [x] Step 117: Simple backspacing - <tt>editor_del_char</tt>
+- [x] Step 116: [Simple backspacing](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#simple-backspacing) - `editor_line_del_char`
+- [x] Step 117: Simple backspacing - `editor_del_char`
 - [x] Step 118: Simple backspacing - Process `DEL_KEY`
-- [x] Step 119: [Backspacing at the start of a line](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#backspacing-at-the-start-of-a-line) - <tt>editor_free_line</tt> and <tt>editor_del_line</tt>
-- [x] Step 120: Backspacing at the start of a line - <tt>editor_line_append_string</tt>
-- [x] Step 121: Backspacing at the start of a line - update <tt>editor_del_char</tt>
-- [x] Step 122: [The `Enter` key](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#the-enter-key) - change <tt>editor_append_line</tt> to  <tt>editor_insert_line</tt>
-- [x] Step 123: The `Enter` key - redefine <tt>editor_append_line</tt> as simple inline call to <tt>editor_insert_line</tt>
-- [x] Step 124: The `Enter` key - <tt>editor_insert_newline</tt>
-- [x] Step 125: The `Enter` key - call <tt>editor_insert_newline</tt> from <tt>editor_process_keypress</tt>
-- [x] Step 126: [Save as...](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#save-as) - <tt>editor_prompt</tt> function
-- [x] Step 127: Save as... - call <tt>editor_prompt</tt> from <tt>editor_save</tt>
-- [x] Step 128: Save as... - allow cancelling in <tt>editor_prompt</tt>
-- [x] Step 129: Save as... - update <tt>editor_save</tt> to handle cancelled prompt
-- [x] Step 130: Save as... - allow backspacing in <tt>editor_prompt</tt>
+- [x] Step 119: [Backspacing at the start of a line](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#backspacing-at-the-start-of-a-line) - `editor_free_line` and `editor_del_line`
+- [x] Step 120: Backspacing at the start of a line - `editor_line_append_string`
+- [x] Step 121: Backspacing at the start of a line - update `editor_del_char`
+- [x] Step 122: [The `Enter` key](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#the-enter-key) - change `editor_append_line` to  `editor_insert_line`
+- [x] Step 123: The `Enter` key - redefine `editor_append_line` as simple inline call to `editor_insert_line`
+- [x] Step 124: The `Enter` key - `editor_insert_newline`
+- [x] Step 125: The `Enter` key - call `editor_insert_newline` from `editor_process_keypress`
+- [x] Step 126: [Save as...](https://viewsourcecode.org/snaptoken/kilo/05.aTextEditor.html#save-as) - `editor_prompt` function
+- [x] Step 127: Save as... - call `editor_prompt` from `editor_save`
+- [x] Step 128: Save as... - allow cancelling in `editor_prompt`
+- [x] Step 129: Save as... - update `editor_save` to handle cancelled prompt
+- [x] Step 130: Save as... - allow backspacing in `editor_prompt`
 
 ## Chapter 6: - [Search](https://viewsourcecode.org/snaptoken/kilo/06.search.html)
 
-- [x] Step 131: [Search] - <tt>editor_find</tt>
-- [x] Step 132: Search - <tt>editor_row__rx_to_cx</tt>
-- [x] Step 133: Search - call <tt>editor_row_rx_to_cx</tt> from <tt>editor_find</tt>
-- [x] Step 134: Search - invoke <tt>editor_find</tt> with `Ctrl+f`
-- [ ] Step 135: Incremental Search
-- [ ] Step 136: 
-- [ ] Step 137: 
+- [x] Step 131: [Search](https://viewsourcecode.org/snaptoken/kilo/06.search.html) - `editor_find`
+- [x] Step 132: Search - `editor_row__rx_to_cx`
+- [x] Step 133: Search - call `editor_row_rx_to_cx` from `editor_find`
+- [x] Step 134: Search - invoke `editor_find` with `Ctrl+f`
+- [x] Step 135: [Incremental Search](https://viewsourcecode.org/snaptoken/kilo/06.search.html#incremental-search) - add callback function to `editor_prompt`
+- [x] Step 136: Incremental Search - pass `NULL` in callso to `editor_prompt` that don't use it
+- [x] Step 137: Incremental Search - `editor_find_callback`
 - [ ] Step 138: Restore cursor position when cancelling search
-- [ ] Step 139: Search forward and backward
-- [ ] Step 140: 
-- [ ] Step 141: 
+- [ ] Step 139: Search forward and backward - 
+- [ ] Step 140: Search forward and backward - 
+- [ ] Step 141: Search forward and backward - 
 
 ## Chapter 7: - [Syntax highlighting](https://viewsourcecode.org/snaptoken/kilo/07.syntaxHighlighting.html)
 

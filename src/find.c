@@ -5,15 +5,15 @@
 #include <string.h>
 #include <stdlib.h>
 
-void editor_find()
+void editor_find_callback(char *query, int key)
 {
-    char *query = editor_prompt("Search: %s (ESC to cancel)");
-    if (NULL == query) return;
+    if ('\r' == key  || '\x1b' == key)
+        return;
 
     for (int i = 0; i < get_file_lines(); i++)
     {
         editor_line *line = get_line(i);
-        char* match = strstr(line->render, query);
+        char *match = strstr(line->render, query);
         if (match)
         {
             set_cursor_y(i);
@@ -22,6 +22,14 @@ void editor_find()
             break;
         }
     }
+}
 
-    free(query);
+
+void editor_find()
+{
+    char *query = editor_prompt("Search: %s (ESC to cancel)", 
+                                editor_find_callback);
+
+    if (query)
+        free(query);
 }
